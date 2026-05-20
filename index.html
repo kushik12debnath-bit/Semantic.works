@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semantic Reworks — Engineering the Future</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg:      #060810;
+      --surface: #0d1120;
+      --card:    #111827;
+      --border:  #1e2a3a;
+      --accent:  #00f0c8;
+      --text:    #e8edf5;
+      --muted:   #7a8a9e;
+      --fd: 'Syne', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'Space Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--fb);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--accent); color: #000; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px; opacity: 0.45;
+    }
+    nav, main, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 4rem;
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s, border-color 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(6,8,16,0.88);
+      backdrop-filter: blur(20px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: var(--fd); font-weight: 800; font-size: 1.1rem;
+      letter-spacing: -0.02em; color: var(--text); text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; color: var(--muted); text-decoration: none;
+      transition: color 0.2s; letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 0.82rem; font-weight: 500;
+      color: #000 !important; background: var(--accent);
+      padding: 0.5rem 1.25rem; border-radius: 3px;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; display: block; transition: all 0.3s; }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 99;
+      background: rgba(6,8,16,0.97); backdrop-filter: blur(20px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.2rem;
+      transform: translateX(100%); transition: transform 0.35s ease;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      font-family: var(--fd); font-size: 1.6rem; font-weight: 700;
+      color: var(--text); text-decoration: none; transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      font-size: 2rem; color: var(--muted); cursor: pointer;
+      background: none; border: none; line-height: 1;
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 10rem 4rem 6rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,240,200,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,200,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, black 30%, transparent 100%);
+    }
+    .hero-glow {
+      position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 550px; pointer-events: none;
+      background: radial-gradient(ellipse, rgba(0,240,200,0.07) 0%, rgba(0,100,255,0.04) 45%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(0,240,200,0.07); border: 1px solid rgba(0,240,200,0.2);
+      padding: 0.32rem 0.9rem; border-radius: 2px; margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.7s 0.2s ease forwards;
+    }
+    .hero-badge::before { content: '//'; opacity: 0.45; }
+
+    h1.hero-title {
+      font-family: var(--fd); font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 6.2rem);
+      line-height: 1.0; letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s 0.4s ease forwards;
+    }
+    h1.hero-title .hi { color: var(--accent); }
+    h1.hero-title .lo { color: var(--muted); }
+
+    .hero-sub {
+      font-size: 1rem; color: var(--muted);
+      max-width: 580px; line-height: 1.85; margin-bottom: 2.8rem;
+      opacity: 0; animation: fadeUp 0.7s 0.6s ease forwards;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+
+    .hero-btn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: var(--accent); color: #000;
+      font-family: var(--fb); font-size: 0.92rem; font-weight: 600;
+      padding: 0.9rem 2.2rem; border-radius: 3px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      opacity: 0; animation: fadeUp 0.7s 0.8s ease forwards;
+    }
+    .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,240,200,0.28); }
+    .hero-btn svg { width: 16px; height: 16px; }
+
+    .hero-stats {
+      display: flex; gap: 3.5rem; margin-top: 5rem;
+      padding-top: 2.8rem; border-top: 1px solid var(--border);
+      opacity: 0; animation: fadeUp 0.7s 1s ease forwards;
+    }
+    .stat-num {
+      font-family: var(--fd); font-size: 2rem; font-weight: 800;
+      color: var(--accent); line-height: 1; letter-spacing: -0.03em;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* ── SHARED SECTION ────────────────────────────────────────── */
+    section { padding: 7rem 4rem; }
+    .section-label {
+      font-family: var(--fm); font-size: 0.68rem;
+      letter-spacing: 0.16em; color: var(--accent);
+      text-transform: uppercase; margin-bottom: 0.9rem;
+    }
+    .section-title {
+      font-family: var(--fd); font-weight: 800;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 1.1rem;
+    }
+    .section-desc {
+      font-size: 0.97rem; color: var(--muted);
+      max-width: 580px; line-height: 1.85;
+    }
+    .sec-header { margin-bottom: 3.5rem; }
+
+    /* ── SERVICES ──────────────────────────────────────────────── */
+    #services { background: var(--surface); }
+    .srv-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px; background: var(--border);
+      border: 1.5px solid var(--border); border-radius: 6px; overflow: hidden;
+    }
+    .srv {
+      background: var(--card); padding: 2.8rem;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+    }
+    .srv::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--sc, var(--accent)), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .srv:hover { background: #141e2f; }
+    .srv:hover::after { opacity: 1; }
+    .srv-num { font-family: var(--fm); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 1.3rem; }
+    .srv-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--border); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.4rem;
+      transition: border-color 0.3s;
+    }
+    .srv:hover .srv-icon { border-color: var(--sc, var(--accent)); }
+    .srv-title {
+      font-family: var(--fd); font-size: 1.2rem; font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 0.4rem;
+    }
+    .srv-tag { font-size: 0.78rem; color: var(--sc, var(--accent)); font-style: italic; opacity: 0.8; margin-bottom: 1.1rem; }
+    .srv-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.4rem; line-height: 1.75; }
+    .srv-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .srv-list li { font-size: 0.84rem; color: var(--muted); display: flex; gap: 0.55rem; align-items: flex-start; }
+    .srv-list li::before { content: '→'; color: var(--sc, var(--accent)); flex-shrink: 0; margin-top: 0.05rem; }
+    .srv-list li strong { color: var(--text); font-weight: 500; }
+    .s1 { --sc: #00f0c8; }
+    .s2 { --sc: #2e9cff; }
+    .s3 { --sc: #a855f7; }
+    .s4 { --sc: #ff4c6a; }
+
+    /* ── ABOUT ─────────────────────────────────────────────────── */
+    #about { background: var(--bg); }
+    .about-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+    }
+    .belief-block { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
+    .belief {
+      display: flex; gap: 1rem; padding: 1.1rem 1.2rem;
+      border: 1px solid var(--border); border-radius: 4px;
+      transition: border-color 0.25s;
+    }
+    .belief:hover { border-color: rgba(0,240,200,0.25); }
+    .belief-n { font-family: var(--fm); font-size: 0.68rem; color: var(--accent); min-width: 28px; margin-top: 0.05rem; }
+    .belief-body strong { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .belief-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    .scope-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.8rem; }
+    .scope {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.3rem 1.5rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .scope:hover { border-color: var(--accent); transform: translateX(5px); }
+    .scope h4 {
+      font-family: var(--fd); font-size: 0.92rem; font-weight: 700;
+      margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .scope h4 span { font-family: var(--fm); font-size: 0.66rem; color: var(--accent); }
+    .scope ul { list-style: none; }
+    .scope ul li {
+      font-size: 0.81rem; color: var(--muted);
+      padding: 0.15rem 0 0.15rem 1rem; position: relative;
+    }
+    .scope ul li::before { content: '–'; position: absolute; left: 0; }
+
+    /* ── CONTACT ───────────────────────────────────────────────── */
+    #contact { background: var(--surface); }
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start;
+    }
+    .c-info { display: flex; flex-direction: column; gap: 2rem; }
+    .c-intro { font-size: 0.97rem; color: var(--muted); line-height: 1.85; }
+    .c-intro strong { color: var(--text); font-weight: 500; }
+    .c-detail-list { display: flex; flex-direction: column; gap: 0.9rem; }
+    .c-detail {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1rem 1.2rem;
+    }
+    .c-detail-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .c-detail-lbl { font-size: 0.68rem; font-family: var(--fm); letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.2rem; }
+    .c-detail-val { font-size: 0.88rem; }
+
+    /* Form */
+    .c-form { display: flex; flex-direction: column; gap: 1rem; }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .f-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .f-group label {
+      font-size: 0.74rem; font-weight: 500; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .f-group input,
+    .f-group select,
+    .f-group textarea {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 3px; color: var(--text);
+      font-family: var(--fb); font-size: 0.9rem; font-weight: 300;
+      padding: 0.72rem 1rem; outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .f-group input::placeholder,
+    .f-group textarea::placeholder { color: rgba(122,138,158,0.5); }
+    .f-group input:focus,
+    .f-group select:focus,
+    .f-group textarea:focus { border-color: var(--accent); }
+    .f-group select option { background: var(--card); }
+    .f-group textarea { resize: vertical; min-height: 118px; }
+    .f-submit {
+      background: var(--accent); color: #000;
+      font-family: var(--fb); font-size: 0.9rem; font-weight: 600;
+      padding: 0.88rem 2.2rem; border: none; border-radius: 3px;
+      cursor: pointer; width: fit-content;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .f-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,240,200,0.28); }
+    .f-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+    .f-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+    .f-success {
+      display: none; background: rgba(0,240,200,0.07);
+      border: 1px solid rgba(0,240,200,0.25); border-radius: 4px;
+      padding: 1.2rem 1.5rem; font-size: 0.9rem; color: var(--accent);
+    }
+    .f-success.show { display: block; }
+
+    /* ── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 4rem 2rem;
+    }
+    .foot-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 2.5rem;
+    }
+    .foot-brand h4 {
+      font-family: var(--fd); font-size: 1.05rem; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 0.7rem;
+    }
+    .foot-brand h4 span { color: var(--accent); }
+    .foot-brand p { font-size: 0.84rem; color: var(--muted); line-height: 1.75; max-width: 280px; }
+    .foot-col h5 {
+      font-size: 0.68rem; font-family: var(--fm); letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem;
+    }
+    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .foot-col ul li a { font-size: 0.86rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .foot-col ul li a:hover { color: var(--accent); }
+    .foot-bottom {
+      border-top: 1px solid var(--border); padding-top: 1.8rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;
+    }
+    .foot-bottom p { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── DIVIDER ───────────────────────────────────────────────── */
+    .sep { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 4rem; }
+
+    /* ── ANIMATIONS ────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      #home { padding: 8rem 1.5rem 4rem; }
+      section { padding: 5rem 1.5rem; }
+      .sep { margin: 0 1.5rem; }
+      .srv-grid { grid-template-columns: 1fr; }
+      .about-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-stats { flex-wrap: wrap; gap: 2rem; }
+      .f-row { grid-template-columns: 1fr; }
+      footer { padding: 3rem 1.5rem 1.5rem; }
+      .foot-inner { grid-template-columns: 1fr 1fr; }
+      .foot-brand { grid-column: span 2; }
+    }
+    @media (max-width: 600px) {
+      h1.hero-title { font-size: 2.5rem; }
+      .foot-inner { grid-template-columns: 1fr; }
+      .foot-brand { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">Semantic<span>.</span>Reworks</a>
+  <ul class="nav-links">
+    <li><a href="#about">Company</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact" class="nav-cta">Start Your Project</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="Close">×</button>
+  <a href="#about" onclick="toggleMenu()">Company</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--accent)">Start Your Project →</a>
+</div>
+
+<main>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<section id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Based in Kolkata · Serving Globally</div>
+    <h1 class="hero-title">
+      Engineering<br>
+      the <span class="hi">Future</span>:<br>
+      <span class="lo">Silicon to Software.</span>
+    </h1>
+    <p class="hero-sub">
+      End-to-end technology solutions combining <strong>Industrial IoT</strong>,
+      <strong>Custom Software</strong>, and <strong>AI-driven Marketing</strong>
+      to scale your business.
+    </p>
+    <a href="#contact" class="hero-btn">
+      Start Your Project
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </a>
+    <div class="hero-stats">
+      <div><div class="stat-num">99+</div><div class="stat-label">Projects Delivered</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
+      <div><div class="stat-num">24/7</div><div class="stat-label">Support Available</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ── SERVICES ───────────────────────────────────────────────── -->
+<section id="services">
+  <div class="sec-header reveal">
+    <p class="section-label">// What We Do</p>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-desc">A 360-degree approach to technology — from factory floor to cloud platform. Whether you need <strong>Industry 4.0</strong> or a <strong>SaaS launch</strong>, we deliver.</p>
+  </div>
+
+  <div class="srv-grid reveal">
+
+    <div class="srv s1">
+      <div class="srv-num">01 / DIGITAL ECOSYSTEM</div>
+      <div class="srv-icon">🖥</div>
+      <div class="srv-title">Digital Ecosystem</div>
+      <div class="srv-tag">"Scalable, Secure, and Built for Performance."</div>
+      <p class="srv-desc">Robust digital foundations using <strong>Flutter</strong> and <strong>Python</strong> — from initial architecture to fully deployed cloud platforms.</p>
+      <ul class="srv-list">
+        <li><span><strong>SaaS:</strong> Multi-user cloud platforms with subscription architecture.</span></li>
+        <li><span><strong>Custom Software:</strong> Tools designed for your specific bottlenecks.</span></li>
+        <li><span><strong>Web Development:</strong> High-speed responsive sites &amp; web apps.</span></li>
+        <li><span><strong>Mobile Apps:</strong> Native &amp; cross-platform iOS/Android with seamless UX.</span></li>
+      </ul>
+    </div>
+
+    <div class="srv s2">
+      <div class="srv-num">02 / HARDWARE &amp; IOT</div>
+      <div class="srv-icon">⚙️</div>
+      <div class="srv-title">Hardware &amp; IoT</div>
+      <div class="srv-tag">"The Bridge Between Physical Assets &amp; Digital Intelligence."</div>
+      <p class="srv-desc">Our core engineering strength — digitizing legacy machines and building new hardware from scratch for Industry 4.0.</p>
+      <ul class="srv-list">
+        <li><span><strong>PCB Solutions:</strong> Design, assembly, and testing for custom electronics.</span></li>
+        <li><span><strong>IIoT &amp; Digitization:</strong> Manual processes → smart connected systems.</span></li>
+        <li><span><strong>Industrial Automation:</strong> Honeywell &amp; Delta PLCs with Raspberry Pi 5 gateways.</span></li>
+        <li><span><strong>Smart Home:</strong> Custom IoT for residential &amp; commercial environments.</span></li>
+      </ul>
+    </div>
+
+    <div class="srv s3">
+      <div class="srv-num">03 / APPLIED AI/ML</div>
+      <div class="srv-icon">🤖</div>
+      <div class="srv-title">Applied AI/ML</div>
+      <div class="srv-tag">"Bringing Intelligence to Your Business Workflow."</div>
+      <p class="srv-desc">We don't just provide data — we provide answers. Embedding intelligence into daily operations to turn raw information into strategic advantage.</p>
+      <ul class="srv-list">
+        <li><span><strong>AI Chatbots:</strong> Intelligent agents for 24/7 customer support.</span></li>
+        <li><span><strong>Platform Integration:</strong> Automated bots for LinkedIn, Facebook &amp; WhatsApp.</span></li>
+        <li><span><strong>AI-Centric Analysis:</strong> Predictive modeling for smarter decisions.</span></li>
+      </ul>
+    </div>
+
+    <div class="srv s4">
+      <div class="srv-num">04 / GROWTH &amp; MARKETING</div>
+      <div class="srv-icon">📈</div>
+      <div class="srv-title">Growth &amp; Marketing</div>
+      <div class="srv-tag">"Driving Traffic, Generating Leads, Closing Sales."</div>
+      <p class="srv-desc">Technology is only half the battle. We ensure your audience finds you and converts — through data strategy and creative design.</p>
+      <ul class="srv-list">
+        <li><span><strong>SMM:</strong> Brand presence across LinkedIn, Facebook &amp; Instagram.</span></li>
+        <li><span><strong>Lead Generation:</strong> Automated funnels — visitors to loyal clients.</span></li>
+        <li><span><strong>Marketing Automation:</strong> Tech-driven email &amp; social sequences.</span></li>
+        <li><span><strong>Creative Design:</strong> Professional poster &amp; banner design.</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ── ABOUT ──────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="about-wrap">
+
+    <div>
+      <div class="reveal">
+        <p class="section-label">// Our Story</p>
+        <h2 class="section-title">Companies create products.<br><span style="color:var(--accent)">We create impact.</span></h2>
+        <p class="section-desc" style="margin-bottom:1.2rem;">
+          An engineering-led automation studio turning complex industrial challenges into measurable digital results.
+          Founded in Kolkata by engineers with deep roots in industrial automation.
+        </p>
+        <p class="section-desc">
+          We saw a gap — the factory floor was disconnected from the cloud. So we built the nervous system for modern industry,
+          combining expertise in <strong style="color:var(--text)">IIoT, PLC Integrations, and Full-Stack AI</strong>.
+        </p>
+      </div>
+
+      <div class="belief-block reveal">
+        <p class="section-label" style="margin-bottom:0.5rem;">// Core Beliefs</p>
+        <div class="belief">
+          <span class="belief-n">01</span>
+          <div class="belief-body">
+            <strong>Hardware and software are one ecosystem.</strong>
+            <p>A brilliant AI model is useless without reliable sensor data. We respect the factory floor as much as the cloud.</p>
+          </div>
+        </div>
+        <div class="belief">
+          <span class="belief-n">02</span>
+          <div class="belief-body">
+            <strong>Latency is the enemy.</strong>
+            <p>In automation, milliseconds matter. We prioritize edge computing so critical decisions are made instantly at the source.</p>
+          </div>
+        </div>
+        <div class="belief">
+          <span class="belief-n">03</span>
+          <div class="belief-body">
+            <strong>Complexity should be invisible.</strong>
+            <p>Operators shouldn't need a CS degree to run a plant. We distill thousands of data points into clear, actionable interfaces.</p>
+          </div>
+        </div>
+        <div class="belief">
+          <span class="belief-n">04</span>
+          <div class="belief-body">
+            <strong>Scalability is built on solid foundations.</strong>
+            <p>We architect secure, modular systems designed to scale from one machine to a global fleet from day one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="section-label" style="margin-bottom:1.2rem;">// What We Engineer</p>
+      <div class="scope-list">
+        <div class="scope">
+          <h4><span>01</span> Industrial IoT &amp; Edge Architecture</h4>
+          <ul>
+            <li>Custom Edge Gateway Development</li>
+            <li>Protocol Translation &amp; Telemetry (MQTT, Modbus, OPC UA)</li>
+          </ul>
+        </div>
+        <div class="scope">
+          <h4><span>02</span> Advanced Automation &amp; Control (OT)</h4>
+          <ul>
+            <li>Complex PLC Integration &amp; Programming</li>
+            <li>Distributed Control Systems (DCS) Interfacing</li>
+          </ul>
+        </div>
+        <div class="scope">
+          <h4><span>03</span> AI-Powered SaaS &amp; Cloud Intelligence</h4>
+          <ul>
+            <li>AI &amp; LLM Integration for Industrial Analysis</li>
+            <li>Predictive Maintenance &amp; Anomaly Detection</li>
+          </ul>
+        </div>
+        <div class="scope">
+          <h4><span>04</span> Next-Gen Dashboards &amp; HMI UI</h4>
+          <ul>
+            <li>Real-time Industrial Monitoring Dashboards</li>
+            <li>Mobile Apps for Remote Control &amp; HMI UX/UI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ── CONTACT ─────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-wrap">
+
+    <!-- Left: Info -->
+    <div class="c-info reveal">
+      <div>
+        <p class="section-label">// Let's Connect</p>
+        <h2 class="section-title">Start your<br>project with us.</h2>
+      </div>
+      <p class="c-intro">
+        Tell us about your industrial or digital challenge and we'll get back to you promptly.
+        Our team in <strong>Kolkata</strong> is ready to help you build something remarkable.
+      </p>
+      <div class="c-detail-list">
+        <div class="c-detail">
+          <span class="c-detail-icon">📧</span>
+          <div>
+            <div class="c-detail-lbl">Email</div>
+            <div class="c-detail-val">kushik12debnath@gmail.com</div>
+          </div>
+        </div>
+        <div class="c-detail">
+          <span class="c-detail-icon">📍</span>
+          <div>
+            <div class="c-detail-lbl">Location</div>
+            <div class="c-detail-val">Kolkata, India · Serving clients globally</div>
+          </div>
+        </div>
+        <div class="c-detail">
+          <span class="c-detail-icon">⏱</span>
+          <div>
+            <div class="c-detail-lbl">Response Time</div>
+            <div class="c-detail-val">Within 24 hours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Form (Formspree) -->
+    <div class="reveal">
+      <!--
+        HOW TO ACTIVATE EMAIL DELIVERY:
+        1. Go to https://formspree.io and sign up (free).
+        2. Create a new form and set the email to kushik12debnath@gmail.com
+        3. Copy your form ID (looks like: xyzabcde)
+        4. Replace YOUR_FORM_ID below in the action URL.
+        Done — every submission will be emailed to you.
+      -->
+      <form
+        id="contactForm"
+        class="c-form"
+        action="https://formspree.io/f/mvzyzyzw"
+        method="POST"
+        onsubmit="handleSubmit(event)"
+      >
+        <!-- Hidden field so Formspree routes to the right email -->
+        <input type="hidden" name="_replyto" value="kushik12debnath@gmail.com" />
+        <input type="hidden" name="_subject" value="New Project Query — Semantic Reworks" />
+
+        <div class="f-row">
+          <div class="f-group">
+            <label for="fname">First Name *</label>
+            <input id="fname" name="firstName" type="text" placeholder="Arjun" required />
+          </div>
+          <div class="f-group">
+            <label for="lname">Last Name *</label>
+            <input id="lname" name="lastName" type="text" placeholder="Sharma" required />
+          </div>
+        </div>
+        <div class="f-group">
+          <label for="email">Work Email *</label>
+          <input id="email" name="email" type="email" placeholder="arjun@company.com" required />
+        </div>
+        <div class="f-group">
+          <label for="phone">Phone Number *</label>
+          <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+        </div>
+        <div class="f-group">
+          <label for="service">Service Interested In *</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>Industrial IoT &amp; Edge Architecture</option>
+            <option>Advanced Automation (PLC / OT)</option>
+            <option>AI-Powered SaaS &amp; Cloud Intelligence</option>
+            <option>HMI UI/UX &amp; Dashboard Design</option>
+            <option>Custom PCB &amp; Hardware Development</option>
+            <option>Digital Ecosystem / Custom Software</option>
+            <option>Growth &amp; Marketing</option>
+          </select>
+        </div>
+        <div class="f-group">
+          <label for="budget">Project Budget</label>
+          <select id="budget" name="budget">
+            <option value="" disabled selected>Select budget range...</option>
+            <option>Under ₹1 Lakh</option>
+            <option>₹1L – ₹5L</option>
+            <option>₹5L – ₹20L</option>
+            <option>₹20L – ₹50L</option>
+            <option>₹50L+</option>
+          </select>
+        </div>
+        <div class="f-group">
+          <label for="msg">Message *</label>
+          <textarea id="msg" name="message" placeholder="Tell us about your technical requirements or business goals..." required></textarea>
+        </div>
+        <button type="submit" class="f-submit" id="submitBtn">Send Message →</button>
+        <p class="f-note">Your details are sent securely to our team. We respond within 24 hours.</p>
+
+        <div class="f-success" id="successMsg">
+          ✓ &nbsp; Message sent! We'll get back to you within 24 hours.
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <h4>Semantic<span>Reworks</span></h4>
+      <p>Engineering-led automation studio at the intersection of industrial hardware and digital intelligence. Based in Kolkata, India.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Digital Ecosystem</a></li>
+        <li><a href="#services">Hardware &amp; IoT</a></li>
+        <li><a href="#services">Applied AI/ML</a></li>
+        <li><a href="#services">Growth &amp; Marketing</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Start a Project</a></li>
+        <li><a href="mailto:kushik12debnath@gmail.com">Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>Semantic Reworks © 2026. All rights reserved. · Kolkata, India · Serving clients globally</p>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+
+  /* ── Mobile menu ── */
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  /* ── Scroll reveal ── */
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' })
+  .observe.bind(
+    (() => {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); } });
+      }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      return obs;
+    })()
+  );
+
+  /* ── Form submit ──
+     If Formspree ID is not yet set, fallback to mailto so form still works
+     during development / before Formspree is configured.
+  */
+  async function handleSubmit(e) {
+    const form  = document.getElementById('contactForm');
+    const btn   = document.getElementById('submitBtn');
+    const success = document.getElementById('successMsg');
+    const action = form.action;
+
+    /* If Formspree ID is still placeholder, use mailto fallback */
+    if (action.includes('YOUR_FORM_ID')) {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const body = [...fd.entries()].map(([k,v]) => `${k}: ${v}`).join('\n');
+      window.location.href = `mailto:kushik12debnath@gmail.com?subject=New Project Query — Semantic Reworks&body=${encodeURIComponent(body)}`;
+      return;
+    }
+
+    /* Real Formspree submission */
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        success.classList.add('show');
+        btn.textContent = 'Sent ✓';
+        setTimeout(() => {
+          success.classList.remove('show');
+          btn.textContent = 'Send Message →';
+          btn.disabled = false;
+        }, 5000);
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
