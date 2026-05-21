@@ -219,6 +219,7 @@
     .form-msg.show { display: block; }
     .msg-success { background: rgba(0,240,200,0.1); border: 1px solid rgba(0,240,200,0.3); color: var(--accent); }
     .msg-error { background: rgba(255,76,106,0.1); border: 1px solid rgba(255,76,106,0.3); color: #ff4c6a; }
+    .msg-warn { background: rgba(255,193,7,0.1); border: 1px solid rgba(255,193,7,0.3); color: #ffc107; }
 
     /* FOOTER */
     footer { background: #010204; border-top: 1px solid var(--border); padding: 5rem 5% 2rem; }
@@ -476,12 +477,13 @@
     </div>
 
     <div class="reveal">
-      <form id="contactForm" class="c-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+      <!-- 100% FREE FORMSUBMIT.CO INTEGRATION (Supports File Uploads) -->
+      <form id="contactForm" class="c-form" action="https://formsubmit.co/ajax/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
         
-        <input type="hidden" name="access_key" value="ab28b3f6-4c50-43e2-b1cc-0bbe27c31a69">
-        <input type="hidden" name="subject" value="New Web Project Query — Semantic Reworks">
-        <input type="hidden" name="from_name" value="Semantic Reworks Website">
-        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+        <!-- FormSubmit Settings to keep it clean via AJAX -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Web Project Query — Semantic Reworks">
+        <input type="hidden" name="_template" value="table">
         
         <!-- Status Messages -->
         <div id="formMsg" class="form-msg"></div>
@@ -524,11 +526,11 @@
           <textarea id="msg" name="message" placeholder="What does your business do? What do you need this platform to achieve?" required></textarea>
         </div>
 
-        <!-- FIXED FILE UPLOAD (name="file") -->
+        <!-- FREE FILE UPLOAD RESTORED -->
         <div class="f-group">
           <label for="docUpload">Attach Brief (Optional)</label>
-          <input type="file" id="docUpload" name="file" accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx" onchange="validateFileSize(this)" />
-          <span class="file-hint">Note: Attached files will appear as a download link at the bottom of the email you receive. Max size: 10MB.</span>
+          <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx" onchange="validateFileSize(this)" />
+          <span class="file-hint">PDF, Word, Excel, PPT. Max size: 10MB.</span>
           <span id="fileError" class="file-error">File size exceeds 10MB. Please choose a smaller file.</span>
         </div>
         
@@ -603,7 +605,6 @@
     }
   }
 
-  // BULLETPROOF FETCH LOGIC FOR WEB3FORMS FILE UPLOAD
   async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById('contactForm');
@@ -613,11 +614,9 @@
     btn.disabled = true; 
     btn.textContent = 'Sending...';
     
-    // Clear previous messages
     msgBox.className = 'form-msg';
     msgBox.innerHTML = '';
     
-    // This perfectly captures all inputs, INCLUDING type="file"
     const formData = new FormData(form);
     
     try {
@@ -629,22 +628,30 @@
       
       const json = await res.json();
       
-      if (res.status === 200 && json.success) {
+      if (res.status === 200 && json.success === "true") {
         form.reset(); 
         msgBox.innerHTML = '✓ Message and file sent successfully! We will contact you soon.';
         msgBox.classList.add('msg-success', 'show');
         btn.textContent = 'Sent ✓';
         setTimeout(() => { msgBox.classList.remove('show'); btn.textContent = 'Send Message'; btn.disabled = false; }, 5000);
-      } else { 
+      } 
+      // Handle FormSubmit's required ONE-TIME activation
+      else if (json.message && json.message.includes("activate")) {
+        msgBox.innerHTML = `⚠️ ACTION REQUIRED: Check your email (kushik12debnath@gmail.com) and click "Activate Form" for this to work.`;
+        msgBox.classList.add('msg-warn', 'show');
+        btn.textContent = 'Send Message'; 
+        btn.disabled = false;
+      }
+      else { 
         console.error("API Error: ", json);
-        msgBox.innerHTML = `❌ Error: ${json.message || 'Server rejected the file.'}`;
+        msgBox.innerHTML = `❌ Error: ${json.message || 'Something went wrong.'}`;
         msgBox.classList.add('msg-error', 'show');
         btn.textContent = 'Send Message'; 
         btn.disabled = false; 
       }
     } catch (error) { 
       console.error("Network Error: ", error);
-      msgBox.innerHTML = `❌ Network Error: Could not connect to the server.`;
+      msgBox.innerHTML = `❌ Network Error: Make sure you are connected to the internet.`;
       msgBox.classList.add('msg-error', 'show');
       btn.textContent = 'Send Message'; 
       btn.disabled = false; 
