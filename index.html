@@ -18,8 +18,8 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --bg: #030509; /* Deeper, richer black */
-      --surface: #0a0f18; /* Smooth dark blue-gray */
+      --bg: #030509; 
+      --surface: #0a0f18; 
       --card: rgba(255, 255, 255, 0.02);
       --border: rgba(255, 255, 255, 0.06);
       --border-hover: rgba(255, 255, 255, 0.15);
@@ -51,7 +51,6 @@
     ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-    /* Elegant Noise Background */
     body::before {
       content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
@@ -59,7 +58,7 @@
     
     nav, main, footer { position: relative; z-index: 1; }
 
-    /* --- NAVIGATION --- */
+    /* NAV */
     nav { 
       position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
       display: flex; align-items: center; justify-content: space-between; 
@@ -79,7 +78,6 @@
     .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 400; }
     .nav-links a:hover { color: var(--text); }
     
-    /* Modern Pill Button */
     .btn-primary { 
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: var(--text); color: var(--bg); 
@@ -90,10 +88,8 @@
     .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 20px var(--accent-glow); }
     .btn-primary svg { width: 14px; height: 14px; transition: transform 0.3s; }
     .btn-primary:hover svg { transform: translateX(3px); }
-
     .nav-cta { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
 
-    /* Hamburger & Mobile Menu */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; display: block; transition: 0.3s; }
     .mobile-menu { position: fixed; inset: 0; z-index: 99; background: rgba(3,5,9,0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; transform: translateY(-100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; }
@@ -102,7 +98,7 @@
     .mobile-menu a:hover { color: var(--accent); }
     .mobile-close { position: absolute; top: 1.5rem; right: 5%; font-size: 2.5rem; color: var(--muted); cursor: pointer; background: none; border: none; }
 
-    /* --- HERO --- */
+    /* HERO */
     #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 12rem 5% 6rem; position: relative; overflow: hidden; }
     .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 10%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 10%, transparent 80%); }
     .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vh; pointer-events: none; background: radial-gradient(circle, rgba(0,240,200,0.08) 0%, rgba(46,156,255,0.05) 30%, transparent 70%); }
@@ -124,12 +120,11 @@
     .stat-num { font-family: var(--fd); font-size: 2.2rem; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -0.02em; }
     .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
 
-    /* Point-to-Point Scroll Indicator */
     .scroll-indicator { position: absolute; bottom: 2rem; left: 5%; display: flex; align-items: center; gap: 1rem; font-family: var(--fm); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0; animation: fadeUp 0.8s 1.2s ease forwards; }
     .scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
     .scroll-line::after { content: ''; position: absolute; top: 0; left: 0; width: 1px; height: 15px; background: var(--accent); animation: scrollDown 2s infinite ease-in-out; }
 
-    /* --- SHARED SECTIONS --- */
+    /* SHARED */
     section { padding: 8rem 5%; }
     .section-label { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
     .section-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
@@ -137,40 +132,33 @@
     .section-desc { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
     .sec-header { margin-bottom: 4rem; }
 
-    /* --- TIERS (Clean SaaS Cards) --- */
+    /* TIERS */
     #tiers { background: var(--surface); position: relative; }
     .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    
     .tier { background: var(--bg); border: 1px solid var(--border); padding: 3rem 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; }
     .tier:hover { transform: translateY(-8px); border-color: var(--border-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-    
     .tier.featured { border-color: rgba(0, 240, 200, 0.3); background: linear-gradient(180deg, rgba(0,240,200,0.03) 0%, transparent 100%), var(--bg); }
     .tier.featured:hover { border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,240,200,0.1); }
-    
     .tier-badge { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); background: var(--surface); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 50px; display: inline-block; margin-bottom: 1.5rem; align-self: flex-start; }
     .tier.featured .tier-badge { background: rgba(0,240,200,0.1); color: var(--accent); border-color: rgba(0,240,200,0.2); }
-    
     .tier-name { font-family: var(--fd); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: var(--text); }
     .tier-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-    
     .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; flex-grow: 1; }
     .tier-list li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.8rem; align-items: flex-start; }
     .tier-list li svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); margin-top: 3px; }
     .tier-list li strong { color: var(--text); font-weight: 500; }
     
-    /* --- SERVICES --- */
+    /* SERVICES */
     #services { background: var(--bg); }
     .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
     .srv { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 16px; transition: all 0.4s ease; }
     .srv:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-5px); }
-    
     .srv-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.8rem; transition: all 0.4s; }
     .srv:hover .srv-icon { background: var(--accent); color: #000; border-color: var(--accent); }
-    
     .srv-title { font-family: var(--fd); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--text); }
     .srv-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
 
-    /* --- ABOUT --- */
+    /* ABOUT */
     #about { background: var(--surface); }
     .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
     .belief-block { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
@@ -180,7 +168,7 @@
     .belief-body strong { display: block; font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; font-family: var(--fd); }
     .belief-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
-    /* --- CONTACT --- */
+    /* CONTACT */
     #contact { background: var(--bg); }
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
     .c-info { position: sticky; top: 150px; }
@@ -190,7 +178,6 @@
     .c-detail-val { font-size: 1rem; color: var(--text); font-weight: 500;}
     .c-detail-lbl { font-size: 0.75rem; color: var(--muted); font-family: var(--fm); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;}
 
-    /* Premium Form Styling */
     .c-form { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 16px; display: flex; flex-direction: column; gap: 1.5rem; }
     .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .f-group { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -217,7 +204,7 @@
     .f-group select option { background: var(--bg); }
     .f-group textarea { resize: vertical; min-height: 120px; }
     
-    /* Document Upload */
+    /* FILE UPLOAD STYLING */
     input[type="file"] { padding: 0.8rem; border: 1px dashed var(--border); cursor: pointer; color: var(--muted); }
     input[type="file"]:hover { border-color: rgba(255,255,255,0.2); }
     input[type="file"]::file-selector-button { background: var(--text); color: var(--bg); border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin-right: 1rem; font-family: var(--fb); font-weight: 600; font-size: 0.8rem; transition: 0.3s; }
@@ -226,10 +213,14 @@
     .file-error { display: none; color: #ff4c6a; font-size: 0.8rem; margin-top: 0.4rem; font-weight: 500; }
     
     .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; font-size: 1rem; }
-    .f-success { display: none; background: rgba(0,240,200,0.1); border: 1px solid rgba(0,240,200,0.3); border-radius: 8px; padding: 1.2rem; font-size: 0.95rem; color: var(--accent); font-weight: 500; text-align: center; }
-    .f-success.show { display: block; }
+    
+    /* Form Messages */
+    .form-msg { display: none; border-radius: 8px; padding: 1.2rem; font-size: 0.95rem; font-weight: 500; text-align: center; margin-bottom: 1rem;}
+    .form-msg.show { display: block; }
+    .msg-success { background: rgba(0,240,200,0.1); border: 1px solid rgba(0,240,200,0.3); color: var(--accent); }
+    .msg-error { background: rgba(255,76,106,0.1); border: 1px solid rgba(255,76,106,0.3); color: #ff4c6a; }
 
-    /* --- FOOTER --- */
+    /* FOOTER */
     footer { background: #010204; border-top: 1px solid var(--border); padding: 5rem 5% 2rem; }
     .foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
     .foot-brand h4 { font-family: var(--fd); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--text); }
@@ -277,7 +268,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">Semantic<span>.</span>Reworks</a>
   <ul class="nav-links">
@@ -301,7 +291,6 @@
 </div>
 
 <main>
-<!-- HERO -->
 <section id="home">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
@@ -336,7 +325,6 @@
   </div>
 </section>
 
-<!-- TIERS -->
 <section id="tiers">
   <div class="sec-header reveal">
     <p class="section-label">Packages</p>
@@ -345,7 +333,6 @@
   </div>
   
   <div class="tier-grid reveal">
-    <!-- Tier 1 -->
     <div class="tier">
       <div class="tier-badge">Starter</div>
       <div class="tier-name">Small Business</div>
@@ -358,7 +345,6 @@
       </ul>
     </div>
     
-    <!-- Tier 2 (Featured) -->
     <div class="tier featured">
       <div class="tier-badge">Most Popular</div>
       <div class="tier-name">Mid-Range Business</div>
@@ -371,7 +357,6 @@
       </ul>
     </div>
     
-    <!-- Tier 3 -->
     <div class="tier">
       <div class="tier-badge">Enterprise</div>
       <div class="tier-name">High-Range</div>
@@ -386,7 +371,6 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="sec-header reveal">
     <p class="section-label">Ecosystem</p>
@@ -418,7 +402,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-wrap">
     <div class="reveal">
@@ -465,7 +448,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-wrap">
     <div class="c-info reveal">
@@ -494,7 +476,6 @@
     </div>
 
     <div class="reveal">
-      <!-- Web3Forms Integration -->
       <form id="contactForm" class="c-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
         
         <input type="hidden" name="access_key" value="ab28b3f6-4c50-43e2-b1cc-0bbe27c31a69">
@@ -502,7 +483,8 @@
         <input type="hidden" name="from_name" value="Semantic Reworks Website">
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
         
-        <div class="f-success" id="successMsg">✓ &nbsp; Message sent successfully! We'll be in touch within 24 hours.</div>
+        <!-- Status Messages -->
+        <div id="formMsg" class="form-msg"></div>
 
         <div class="f-row">
           <div class="f-group">
@@ -542,21 +524,21 @@
           <textarea id="msg" name="message" placeholder="What does your business do? What do you need this platform to achieve?" required></textarea>
         </div>
 
+        <!-- FIXED FILE UPLOAD (name="file") -->
         <div class="f-group">
           <label for="docUpload">Attach Brief (Optional)</label>
-          <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx" onchange="validateFileSize(this)" />
-          <span class="file-hint">PDF, Word, Excel, PPT. Max size: 10MB.</span>
+          <input type="file" id="docUpload" name="file" accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx" onchange="validateFileSize(this)" />
+          <span class="file-hint">Note: Attached files will appear as a download link at the bottom of the email you receive. Max size: 10MB.</span>
           <span id="fileError" class="file-error">File size exceeds 10MB. Please choose a smaller file.</span>
         </div>
         
-        <button type="submit" class="btn-primary f-submit" id="submitBtn">Send Message →</button>
+        <button type="submit" class="btn-primary f-submit" id="submitBtn">Send Message</button>
       </form>
     </div>
   </div>
 </section>
 </main>
 
-<!-- WhatsApp Float -->
 <a href="https://wa.me/918250278119?text=Hi%20Semantic%20Reworks,%20I'm%20interested%20in%20discussing%20a%20project." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
@@ -590,10 +572,7 @@
 </footer>
 
 <script>
-  // Force page to top on refresh
-  if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-  }
+  if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
   window.addEventListener('load', () => { window.scrollTo(0, 0); });
 
   const nav = document.getElementById('navbar');
@@ -624,24 +603,27 @@
     }
   }
 
+  // BULLETPROOF FETCH LOGIC FOR WEB3FORMS FILE UPLOAD
   async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById('contactForm');
     const btn = document.getElementById('submitBtn');
-    const success = document.getElementById('successMsg');
+    const msgBox = document.getElementById('formMsg');
     
     btn.disabled = true; 
     btn.textContent = 'Sending...';
     
-    // Reset success message styling in case of previous errors
-    success.style.color = 'var(--accent)';
-    success.style.borderColor = 'rgba(0,240,200,0.3)';
-    success.style.background = 'rgba(0,240,200,0.1)';
+    // Clear previous messages
+    msgBox.className = 'form-msg';
+    msgBox.innerHTML = '';
+    
+    // This perfectly captures all inputs, INCLUDING type="file"
+    const formData = new FormData(form);
     
     try {
       const res = await fetch(form.action, { 
         method: 'POST', 
-        body: new FormData(form),
+        body: formData,
         headers: { 'Accept': 'application/json' }
       });
       
@@ -649,30 +631,22 @@
       
       if (res.status === 200 && json.success) {
         form.reset(); 
-        success.innerHTML = '✓ &nbsp; Message sent successfully! We\'ll be in touch within 24 hours.';
-        success.classList.add('show'); 
+        msgBox.innerHTML = '✓ Message and file sent successfully! We will contact you soon.';
+        msgBox.classList.add('msg-success', 'show');
         btn.textContent = 'Sent ✓';
-        setTimeout(() => { success.classList.remove('show'); btn.textContent = 'Send Message →'; btn.disabled = false; }, 5000);
+        setTimeout(() => { msgBox.classList.remove('show'); btn.textContent = 'Send Message'; btn.disabled = false; }, 5000);
       } else { 
-        // THIS WILL PRINT THE EXACT API ERROR TO THE SCREEN
-        console.error("Web3Forms API Error: ", json);
-        btn.textContent = 'Error - Try Again'; 
-        success.innerHTML = `❌ API Error: ${json.message || 'Something went wrong on the server.'}`;
-        success.style.color = '#ff4c6a';
-        success.style.borderColor = '#ff4c6a';
-        success.style.background = 'rgba(255, 76, 106, 0.1)';
-        success.classList.add('show');
+        console.error("API Error: ", json);
+        msgBox.innerHTML = `❌ Error: ${json.message || 'Server rejected the file.'}`;
+        msgBox.classList.add('msg-error', 'show');
+        btn.textContent = 'Send Message'; 
         btn.disabled = false; 
       }
     } catch (error) { 
-      // THIS CATCHES CORS / LOCALHOST ERRORS
       console.error("Network Error: ", error);
-      btn.textContent = 'Error - Try Again'; 
-      success.innerHTML = `❌ Network Error: Are you running this file directly (file://)? You must use a local web server (like VS Code Live Server) to submit forms.`;
-      success.style.color = '#ff4c6a';
-      success.style.borderColor = '#ff4c6a';
-      success.style.background = 'rgba(255, 76, 106, 0.1)';
-      success.classList.add('show');
+      msgBox.innerHTML = `❌ Network Error: Could not connect to the server.`;
+      msgBox.classList.add('msg-error', 'show');
+      btn.textContent = 'Send Message'; 
       btn.disabled = false; 
     }
   }
