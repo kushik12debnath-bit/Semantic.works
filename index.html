@@ -630,7 +630,13 @@
     const btn = document.getElementById('submitBtn');
     const success = document.getElementById('successMsg');
     
-    btn.disabled = true; btn.textContent = 'Sending...';
+    btn.disabled = true; 
+    btn.textContent = 'Sending...';
+    
+    // Reset success message styling in case of previous errors
+    success.style.color = 'var(--accent)';
+    success.style.borderColor = 'rgba(0,240,200,0.3)';
+    success.style.background = 'rgba(0,240,200,0.1)';
     
     try {
       const res = await fetch(form.action, { 
@@ -643,14 +649,31 @@
       
       if (res.status === 200 && json.success) {
         form.reset(); 
+        success.innerHTML = '✓ &nbsp; Message sent successfully! We\'ll be in touch within 24 hours.';
         success.classList.add('show'); 
         btn.textContent = 'Sent ✓';
         setTimeout(() => { success.classList.remove('show'); btn.textContent = 'Send Message →'; btn.disabled = false; }, 5000);
       } else { 
-        btn.textContent = 'Error - Try Again'; btn.disabled = false; 
+        // THIS WILL PRINT THE EXACT API ERROR TO THE SCREEN
+        console.error("Web3Forms API Error: ", json);
+        btn.textContent = 'Error - Try Again'; 
+        success.innerHTML = `❌ API Error: ${json.message || 'Something went wrong on the server.'}`;
+        success.style.color = '#ff4c6a';
+        success.style.borderColor = '#ff4c6a';
+        success.style.background = 'rgba(255, 76, 106, 0.1)';
+        success.classList.add('show');
+        btn.disabled = false; 
       }
     } catch (error) { 
-      btn.textContent = 'Error - Try Again'; btn.disabled = false; 
+      // THIS CATCHES CORS / LOCALHOST ERRORS
+      console.error("Network Error: ", error);
+      btn.textContent = 'Error - Try Again'; 
+      success.innerHTML = `❌ Network Error: Are you running this file directly (file://)? You must use a local web server (like VS Code Live Server) to submit forms.`;
+      success.style.color = '#ff4c6a';
+      success.style.borderColor = '#ff4c6a';
+      success.style.background = 'rgba(255, 76, 106, 0.1)';
+      success.classList.add('show');
+      btn.disabled = false; 
     }
   }
 </script>
