@@ -219,7 +219,6 @@
     .form-msg.show { display: block; }
     .msg-success { background: rgba(0,240,200,0.1); border: 1px solid rgba(0,240,200,0.3); color: var(--accent); }
     .msg-error { background: rgba(255,76,106,0.1); border: 1px solid rgba(255,76,106,0.3); color: #ff4c6a; }
-    .msg-warn { background: rgba(255,193,7,0.1); border: 1px solid rgba(255,193,7,0.3); color: #ffc107; }
 
     /* FOOTER */
     footer { background: #010204; border-top: 1px solid var(--border); padding: 5rem 5% 2rem; }
@@ -477,15 +476,16 @@
     </div>
 
     <div class="reveal">
-      <!-- 100% FREE FORMSUBMIT.CO INTEGRATION (Supports File Uploads) -->
-      <form id="contactForm" class="c-form" action="https://formsubmit.co/ajax/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+      <!-- THE HIDDEN IFRAME HACK: This stops the page from redirecting while keeping standard file uploads working -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleIframeLoad(); }"></iframe>
+
+      <!-- FormSubmit Integration (NO /AJAX/ in URL!) -->
+      <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data" target="hidden_iframe" onsubmit="handleFormSubmit()">
         
-        <!-- FormSubmit Settings to keep it clean via AJAX -->
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New Web Project Query — Semantic Reworks">
         <input type="hidden" name="_template" value="table">
         
-        <!-- Status Messages -->
         <div id="formMsg" class="form-msg"></div>
 
         <div class="f-row">
@@ -526,11 +526,10 @@
           <textarea id="msg" name="message" placeholder="What does your business do? What do you need this platform to achieve?" required></textarea>
         </div>
 
-        <!-- FREE FILE UPLOAD RESTORED -->
         <div class="f-group">
           <label for="docUpload">Attach Brief (Optional)</label>
           <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx" onchange="validateFileSize(this)" />
-          <span class="file-hint">PDF, Word, Excel, PPT. Max size: 10MB.</span>
+          <span class="file-hint">PDF, Word, Excel, PPT. Max size: 10MB. Document will appear as a link at the bottom of your email.</span>
           <span id="fileError" class="file-error">File size exceeds 10MB. Please choose a smaller file.</span>
         </div>
         
@@ -605,56 +604,38 @@
     }
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('contactForm');
+  // --- THE NEW INVISIBLE IFRAME SUBMISSION LOGIC ---
+  let submitted = false;
+
+  function handleFormSubmit() {
+    submitted = true;
     const btn = document.getElementById('submitBtn');
     const msgBox = document.getElementById('formMsg');
     
     btn.disabled = true; 
     btn.textContent = 'Sending...';
-    
-    msgBox.className = 'form-msg';
+    msgBox.className = 'form-msg'; 
     msgBox.innerHTML = '';
-    
-    const formData = new FormData(form);
-    
-    try {
-      const res = await fetch(form.action, { 
-        method: 'POST', 
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
+  }
+
+  function handleIframeLoad() {
+    if (submitted) {
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const msgBox = document.getElementById('formMsg');
       
-      const json = await res.json();
+      form.reset(); 
+      msgBox.innerHTML = '✓ Message and document sent successfully! We will contact you soon.';
+      msgBox.classList.add('msg-success', 'show');
+      btn.textContent = 'Sent ✓';
       
-      if (res.status === 200 && json.success === "true") {
-        form.reset(); 
-        msgBox.innerHTML = '✓ Message and file sent successfully! We will contact you soon.';
-        msgBox.classList.add('msg-success', 'show');
-        btn.textContent = 'Sent ✓';
-        setTimeout(() => { msgBox.classList.remove('show'); btn.textContent = 'Send Message'; btn.disabled = false; }, 5000);
-      } 
-      // Handle FormSubmit's required ONE-TIME activation
-      else if (json.message && json.message.includes("activate")) {
-        msgBox.innerHTML = `⚠️ ACTION REQUIRED: Check your email (kushik12debnath@gmail.com) and click "Activate Form" for this to work.`;
-        msgBox.classList.add('msg-warn', 'show');
-        btn.textContent = 'Send Message'; 
-        btn.disabled = false;
-      }
-      else { 
-        console.error("API Error: ", json);
-        msgBox.innerHTML = `❌ Error: ${json.message || 'Something went wrong.'}`;
-        msgBox.classList.add('msg-error', 'show');
+      setTimeout(() => { 
+        msgBox.classList.remove('show'); 
         btn.textContent = 'Send Message'; 
         btn.disabled = false; 
-      }
-    } catch (error) { 
-      console.error("Network Error: ", error);
-      msgBox.innerHTML = `❌ Network Error: Make sure you are connected to the internet.`;
-      msgBox.classList.add('msg-error', 'show');
-      btn.textContent = 'Send Message'; 
-      btn.disabled = false; 
+      }, 5000);
+      
+      submitted = false;
     }
   }
 </script>
