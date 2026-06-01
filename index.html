@@ -135,7 +135,7 @@
     .service-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); }
     .service-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6;}
 
-    /* WORK SECTION (UPDATED WITH IMAGES) */
+    /* WORK SECTION */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
     .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.02); display: flex; flex-direction: column;}
     .project-card:hover { transform: translateY(-5px); border-color: var(--border-hover); box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08); }
@@ -181,13 +181,8 @@
     input[type="file"]::file-selector-button:hover { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 4px 10px var(--accent-glow);}
     .file-hint { font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem; }
 
-    .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; border-radius: 8px; font-size: 1rem;}
+    .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: 0.3s;}
     
-    .form-msg { display: none; border-radius: 8px; padding: 1rem; font-size: 0.9rem; font-weight: 600; text-align: center; margin-bottom: 1rem;}
-    .form-msg.show { display: block; animation: fadeUp 0.3s ease forwards;}
-    .msg-success { background: #d1fae5; border: 1px solid #34d399; color: #065f46; }
-    .msg-error { background: #fee2e2; border: 1px solid #ef4444; color: #b91c1c; }
-
     /* FOOTER */
     footer { background: #111827; border-top: 1px solid var(--border); padding: 5rem 5% 2rem; color: #f9fafb;}
     .foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto;}
@@ -397,9 +392,7 @@
     </div>
 
     <div class="reveal">
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleIframeLoad(); }"></iframe>
-
-      <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data" target="hidden_iframe" onsubmit="handleFormSubmit()">
+      <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data">
         
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New Website Inquiry — Semantic Rework">
@@ -449,7 +442,7 @@
           <label for="docUpload">Attach Document (Optional)</label>
           <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx" onchange="validateFileSize(this)" />
           <span class="file-hint">Allowed: PDF, Word, Excel. Max size: 10MB.</span>
-          <span id="fileError" class="form-msg msg-error" style="display:none; margin-top:0.5rem; padding: 0.5rem;">File exceeds the 10MB limit. Please choose a smaller file.</span>
+          <span id="fileError" class="form-msg msg-error" style="display:none; margin-top:0.5rem; padding: 0.5rem; border:1px solid #ef4444; color:#b91c1c;">File exceeds the 10MB limit. Please choose a smaller file.</span>
         </div>
         
         <button type="submit" class="btn-primary btn-accent f-submit" id="submitBtn">Send Message</button>
@@ -526,40 +519,9 @@
     }
   }
 
-  // --- CLEAN FORM SUBMISSION LOGIC (IFRAME METHOD) ---
-  let submitted = false;
-
-  function handleFormSubmit() {
-    submitted = true;
-    const btn = document.getElementById('submitBtn');
-    const msgBox = document.getElementById('formMsg');
-    
-    btn.disabled = true; 
-    btn.textContent = 'Sending...';
-    msgBox.className = 'form-msg'; 
-    msgBox.innerHTML = '';
-  }
-
-  function handleIframeLoad() {
-    if (submitted) {
-      const form = document.getElementById('contactForm');
-      const btn = document.getElementById('submitBtn');
-      const msgBox = document.getElementById('formMsg');
-      
-      form.reset(); 
-      msgBox.innerHTML = '✓ Message and document sent successfully! We will be in touch soon.';
-      msgBox.classList.add('msg-success', 'show');
-      btn.textContent = 'Sent ✓';
-      
-      setTimeout(() => { 
-        msgBox.classList.remove('show'); 
-        btn.textContent = 'Send Message'; 
-        btn.disabled = false; 
-      }, 5000);
-      
-      submitted = false;
-    }
-  }
+  // NOTE: Iframe script logic removed temporarily to allow FormSubmit Activation.
+  // When you click submit on your live site, it will redirect you to FormSubmit to complete the captcha.
+  // After you activate your email, we can add the iframe back to make it invisible again.
 </script>
 </body>
 </html>
