@@ -23,10 +23,10 @@
       --surface: #ffffff; 
       --border: #e5e7eb;
       --border-hover: #d1d5db;
-      --accent: #2563eb; /* Trustworthy Agency Blue */
+      --accent: #2563eb; 
       --accent-glow: rgba(37, 99, 235, 0.15);
       --gradient: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
-      --text: #111827; /* Dark Gray for text */
+      --text: #111827; 
       --muted: #6b7280;
       
       --fb: 'Inter', sans-serif;
@@ -444,8 +444,10 @@
     </div>
 
     <div class="reveal">
+      <!-- THE HIDDEN IFRAME HACK -->
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleIframeLoad(); }"></iframe>
 
+      <!-- FormSubmit Integration -->
       <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit()">
         
         <input type="hidden" name="_captcha" value="false">
@@ -549,6 +551,7 @@
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   })();
 
+  // --- FORM SUBMISSION LOGIC (IFRAME METHOD) ---
   let submitted = false;
 
   function handleFormSubmit() {
