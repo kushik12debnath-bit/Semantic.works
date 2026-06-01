@@ -4,30 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <meta name="description" content="Semantic Rework is a web engineering studio building high-performance corporate platforms, custom web applications, and SaaS frontends." />
-  <meta name="keywords" content="web development, SaaS frontend, custom web apps, high-performance websites, corporate web platforms, Semantic Rework" />
+  <meta name="description" content="Semantic Rework is a modern web design and development studio building clean, fast, and responsive websites for growing businesses." />
+  <meta name="keywords" content="web development, web design studio, modern websites, responsive design, Semantic Rework" />
   <meta name="author" content="Semantic Rework" />
   
-  <title>Semantic Rework — High-Performance Web Engineering</title>
+  <title>Semantic Rework — Modern Web Design Studio</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --bg: #000000; 
-      --surface: #0a0a0a; 
-      --surface-elevated: #141414;
-      --border: #222222;
-      --border-hover: #444444;
-      --accent: #0070f3; /* Vercel/Modern Tech Blue */
-      --accent-glow: rgba(0, 112, 243, 0.2);
-      --gradient: linear-gradient(135deg, #0070f3 0%, #00dfd8 100%);
-      --text: #f5f5f5;
-      --muted: #999999;
+      /* Clean Light Theme Palette */
+      --bg: #f9fafb; 
+      --surface: #ffffff; 
+      --border: #e5e7eb;
+      --border-hover: #d1d5db;
+      --accent: #2563eb; /* Trustworthy Agency Blue */
+      --accent-glow: rgba(37, 99, 235, 0.15);
+      --gradient: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+      --text: #111827; /* Dark Gray for text */
+      --muted: #6b7280;
       
       --fb: 'Inter', sans-serif;
       --fm: 'JetBrains Mono', monospace;
@@ -41,19 +41,18 @@
       overflow-x: hidden; -webkit-font-smoothing: antialiased;
     }
     
-    ::selection { background: rgba(0, 112, 243, 0.3); color: #fff; }
-    ::-webkit-scrollbar { width: 6px; }
+    ::selection { background: rgba(37, 99, 235, 0.2); color: var(--accent); }
+    ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #555; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-    /* Subtle Engineering Grid */
+    /* Light Minimalist Grid Background */
     body::before {
       content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px; opacity: 0.3;
-      mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
-      -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+      background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.4;
     }
     
     nav, main, footer { position: relative; z-index: 1; }
@@ -66,145 +65,173 @@
       border-bottom: 1px solid transparent;
     }
     nav.scrolled { 
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); 
+      background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border); padding: 1rem 5%;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
-    .nav-logo { font-family: var(--fb); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.04em; color: var(--text); text-decoration: none; }
+    .nav-logo { font-family: var(--fb); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.04em; color: var(--text); text-decoration: none; }
     .nav-logo span { color: var(--accent); }
+    
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; font-weight: 500; transition: 0.2s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a { font-size: 0.9rem; color: var(--muted); text-decoration: none; font-weight: 500; transition: 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
     
     .btn-primary { 
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--text); color: var(--bg); 
-      font-family: var(--fb); font-size: 0.85rem; font-weight: 600; 
-      padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; border: none; cursor: pointer; transition: 0.2s; 
+      background: var(--surface); color: var(--text); 
+      font-family: var(--fb); font-size: 0.9rem; font-weight: 600; 
+      padding: 0.6rem 1.4rem; border-radius: 8px; text-decoration: none; 
+      border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; 
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
-    .btn-primary:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(255,255,255,0.1); }
-    .btn-accent { background: var(--accent); color: #fff; }
-    .btn-accent:hover { background: #005bb5; box-shadow: 0 4px 14px var(--accent-glow); }
+    .btn-primary:hover { border-color: var(--border-hover); transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
     
+    .btn-accent { 
+      background: var(--text); color: var(--surface); border: 1px solid var(--text);
+    }
+    .btn-accent:hover { 
+      background: var(--accent); border-color: var(--accent); color: white;
+      box-shadow: 0 4px 14px var(--accent-glow); 
+    }
+
+    /* Mobile Menu */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); display: block; transition: 0.3s; }
+    .mobile-menu { position: fixed; inset: 0; z-index: 99; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: transform 0.4s ease; opacity: 0; }
+    .mobile-menu.open { transform: translateY(0); opacity: 1; }
+    .mobile-menu a { font-family: var(--fb); font-size: 1.5rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: 0.2s; }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-close { position: absolute; top: 1.5rem; right: 5%; font-size: 2.5rem; color: var(--muted); cursor: pointer; background: none; border: none; transition: 0.2s;}
+    .mobile-close:hover { color: var(--text); }
+
     /* HERO */
-    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 5% 4rem; }
-    .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 60vw; height: 60vh; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--fm); font-size: 0.75rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.6s 0.1s forwards; }
-    .hero-badge span { width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
-    h1.hero-title { font-family: var(--fb); font-weight: 800; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10rem 5% 6rem; position: relative; }
+    
+    .hero-glow { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 70vw; height: 60vh; background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%); pointer-events: none; }
+    
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--fm); font-size: 0.75rem; color: var(--accent); background: #eff6ff; border: 1px solid #bfdbfe; padding: 0.5rem 1.2rem; border-radius: 50px; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.6s 0.1s forwards; font-weight: 600;}
+    
+    h1.hero-title { font-family: var(--fb); font-weight: 800; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; color: #111827;}
     .text-gradient { background: var(--gradient); -webkit-background-clip: text; color: transparent; }
-    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 650px; line-height: 1.6; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s 0.3s forwards; }
+    
+    .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 650px; line-height: 1.7; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s 0.3s forwards; }
+    
     .hero-actions { display: flex; gap: 1rem; opacity: 0; animation: fadeUp 0.6s 0.4s forwards; }
 
-    /* TECH STACK SECTION */
-    .stack-container { margin-top: 5rem; width: 100%; max-width: 900px; border-top: 1px solid var(--border); padding-top: 3rem; opacity: 0; animation: fadeUp 0.6s 0.5s forwards; }
-    .stack-label { font-family: var(--fm); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.5rem; }
-    .stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .stack-item { background: var(--surface-elevated); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 6px; font-family: var(--fm); font-size: 0.85rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; transition: 0.2s; cursor: default;}
-    .stack-item:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px);}
-    .stack-item::before { content: ''; width: 8px; height: 8px; background: var(--border-hover); border-radius: 50%; transition: 0.2s;}
-    .stack-item:hover::before { background: var(--accent); }
+    /* TECH STACK */
+    .stack-container { margin-top: 5rem; width: 100%; max-width: 900px; padding-top: 3rem; opacity: 0; animation: fadeUp 0.6s 0.5s forwards; }
+    .stack-label { font-family: var(--fm); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.5rem; font-weight: 600;}
+    .stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+    .stack-item { background: var(--surface); border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 50px; font-family: var(--fb); font-weight: 500; font-size: 0.85rem; color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.02); transition: 0.2s; cursor: default;}
+    .stack-item:hover { border-color: #bfdbfe; background: #eff6ff; color: var(--accent); transform: translateY(-2px);}
 
     /* SHARED */
     section { padding: 6rem 5%; }
-    .section-label { font-family: var(--fm); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600;}
-    .section-title { font-family: var(--fb); font-weight: 700; font-size: clamp(2rem, 4vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; }
-    .section-desc { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.6; }
+    .section-label { font-family: var(--fm); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: block; font-weight: 600;}
+    .section-title { font-family: var(--fb); font-weight: 800; font-size: clamp(2rem, 4vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; color: var(--text);}
+    .section-desc { font-size: 1.1rem; color: var(--muted); max-width: 600px; line-height: 1.6; }
     .sec-header { margin-bottom: 4rem; }
 
-    /* SERVICES */
-    #services { background: var(--surface); border-top: 1px solid var(--border); }
-    .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .tier { background: var(--bg); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; transition: 0.3s; display: flex; flex-direction: column; }
-    .tier:hover { border-color: var(--border-hover); transform: translateY(-4px); }
-    .tier.featured { border-color: var(--accent); background: linear-gradient(180deg, rgba(0,112,243,0.03) 0%, var(--bg) 100%); }
-    .tier-badge { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); background: var(--surface-elevated); border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 4px; display: inline-block; margin-bottom: 1.5rem; align-self: flex-start; }
-    .tier.featured .tier-badge { background: rgba(0,112,243,0.1); color: var(--accent); border-color: rgba(0,112,243,0.2); }
-    .tier-name { font-family: var(--fb); font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.8rem; color: var(--text); }
-    .tier-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-    .tier-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.8rem; align-items: center; }
-    .tier-list li svg { flex-shrink: 0; width: 16px; height: 16px; color: var(--accent); }
-    .tier-list li strong { color: var(--text); font-weight: 500; }
+    /* SERVICES CARDS */
+    #services { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);}
+    .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
     
-    /* EXPERTISE */
-    #expertise { background: var(--bg); }
-    .uc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-    .uc-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; transition: 0.3s; }
-    .uc-card:hover { border-color: var(--accent); background: var(--surface-elevated);}
-    .uc-icon { margin-bottom: 1rem; color: var(--accent); }
-    .uc-icon svg { width: 32px; height: 32px; }
-    .uc-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text);}
-    .uc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6;}
+    .tier { background: var(--bg); border: 1px solid var(--border); padding: 2.5rem; border-radius: 16px; transition: 0.3s; display: flex; flex-direction: column; }
+    .tier:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+    
+    .tier.featured { border-color: #bfdbfe; background: #ffffff; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1); }
+    .tier.featured:hover { border-color: var(--accent); }
+    
+    .tier-badge { font-family: var(--fm); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); background: #ffffff; border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 6px; display: inline-block; margin-bottom: 1.5rem; align-self: flex-start; font-weight: 600;}
+    .tier.featured .tier-badge { background: #eff6ff; color: var(--accent); border-color: #bfdbfe; }
+    
+    .tier-name { font-family: var(--fb); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.8rem; color: var(--text); }
+    .tier-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    
+    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .tier-list li { font-size: 0.9rem; color: var(--text); display: flex; gap: 0.8rem; align-items: flex-start; font-weight: 500;}
+    .tier-list li svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); margin-top: 2px;}
 
-    /* ABOUT / PROTOCOL */
-    #protocol { background: var(--surface); border-top: 1px solid var(--border); }
-    .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .belief-block { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .belief { background: var(--bg); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px; }
-    .belief-n { font-family: var(--fm); font-size: 0.8rem; color: var(--muted); display: block; margin-bottom: 1rem; }
-    .belief-body strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; font-weight: 600; }
-    .belief-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    /* WHY US */
+    #expertise { background: var(--bg); }
+    .uc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .uc-card { background: var(--surface); border: 1px solid var(--border); padding: 2.5rem; border-radius: 16px; transition: 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.02);}
+    .uc-card:hover { border-color: #bfdbfe; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); transform: translateY(-3px);}
+    .uc-icon { margin-bottom: 1.5rem; color: var(--accent); background: #eff6ff; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px;}
+    .uc-icon svg { width: 24px; height: 24px; }
+    .uc-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text);}
+    .uc-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6;}
+
+    /* ABOUT */
+    #about { background: var(--surface); border-top: 1px solid var(--border); }
+    .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .belief-block { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .belief { background: var(--bg); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; }
+    .belief-n { font-family: var(--fm); font-size: 0.8rem; color: var(--accent); display: block; margin-bottom: 0.5rem; font-weight: 600;}
+    .belief-body strong { display: block; font-size: 1.05rem; color: var(--text); margin-bottom: 0.5rem; font-weight: 700; }
+    .belief-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
     /* CONTACT */
     #contact { background: var(--bg); border-top: 1px solid var(--border); }
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
     .c-detail-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
     .c-detail { display: flex; align-items: center; gap: 1.2rem; }
-    .c-detail-icon { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--muted); }
-    .c-detail-icon svg { width: 18px; height: 18px; }
-    .c-detail-val { font-size: 0.95rem; color: var(--text); font-family: var(--fm);}
-    .c-detail-lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;}
+    .c-detail-icon { width: 45px; height: 45px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,0.02);}
+    .c-detail-icon svg { width: 20px; height: 20px; }
+    .c-detail-val { font-size: 1rem; color: var(--text); font-weight: 600;}
+    .c-detail-lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; font-family: var(--fm);}
 
-    .c-form { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem; }
+    .c-form { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 16px; display: flex; flex-direction: column; gap: 1.5rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);}
     .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .f-group { display: flex; flex-direction: column; gap: 0.6rem; }
-    .f-group label { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; color: var(--muted); letter-spacing: 0.05em;}
+    .f-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .f-group label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
     
     .f-group input, .f-group select, .f-group textarea { 
-      background: var(--bg); border: 1px solid var(--border); border-radius: 6px; 
-      color: var(--text); font-family: var(--fb); font-size: 0.9rem; padding: 0.8rem 1rem; 
+      background: var(--bg); border: 1px solid var(--border); border-radius: 8px; 
+      color: var(--text); font-family: var(--fb); font-size: 0.95rem; padding: 0.8rem 1rem; 
       outline: none; transition: 0.2s; -webkit-appearance: none; 
     }
-    .f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
-    .f-group textarea { resize: vertical; min-height: 100px; }
+    .f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); background: var(--surface);}
+    .f-group textarea { resize: vertical; min-height: 120px; }
     
-    .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; border-radius: 6px;}
-    .form-msg { display: none; border-radius: 6px; padding: 1rem; font-size: 0.9rem; font-weight: 500; text-align: center; margin-bottom: 1rem;}
+    .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; border-radius: 8px; font-size: 1rem;}
+    .form-msg { display: none; border-radius: 8px; padding: 1rem; font-size: 0.9rem; font-weight: 600; text-align: center; margin-bottom: 1rem;}
     .form-msg.show { display: block; }
-    .msg-success { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10b981; }
+    .msg-success { background: #d1fae5; border: 1px solid #34d399; color: #065f46; }
 
     /* FOOTER */
-    footer { background: #000; border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 5rem 5% 2rem; }
     .foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .foot-brand h4 { font-family: var(--fb); font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 1rem;}
-    .foot-brand p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; max-width: 300px; }
-    .foot-col h5 { font-size: 0.8rem; color: var(--text); margin-bottom: 1.5rem; font-weight: 600; }
+    .foot-brand h4 { font-family: var(--fb); font-size: 1.25rem; font-weight: 800; color: var(--text); margin-bottom: 1rem;}
+    .foot-brand p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; max-width: 320px; }
+    .foot-col h5 { font-size: 0.85rem; color: var(--text); margin-bottom: 1.5rem; font-weight: 700; }
     .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-    .foot-col ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: 0.2s;}
-    .foot-col ul li a:hover { color: var(--text); }
+    .foot-col ul li a { font-size: 0.9rem; color: var(--muted); text-decoration: none; transition: 0.2s; font-weight: 500;}
+    .foot-col ul li a:hover { color: var(--accent); }
     .foot-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .foot-bottom p { font-size: 0.8rem; color: var(--muted); font-family: var(--fm);}
+    .foot-bottom p { font-size: 0.85rem; color: var(--muted); font-family: var(--fm);}
 
     /* WhatsApp Float */
-    .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; text-decoration: none; box-shadow: 0 8px 24px rgba(37,211,102,0.3); transition: 0.3s; z-index: 100; }
-    .wa-float:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(37,211,102,0.4); }
-    .wa-float svg { width: 28px; height: 28px; fill: white; }
+    .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; text-decoration: none; box-shadow: 0 10px 25px rgba(37,211,102,0.3); transition: 0.3s; z-index: 100; }
+    .wa-float:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(37,211,102,0.4); }
+    .wa-float svg { width: 32px; height: 32px; fill: white; }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(30px); transition: 0.6s ease; }
     .reveal.vis { opacity: 1; transform: translateY(0); }
 
     /* Mobile */
-    @media (max-width: 992px) { .about-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; } .c-form { padding: 2rem; } }
+    @media (max-width: 992px) { .about-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 4rem; } .c-form { padding: 2rem; } }
     @media (max-width: 768px) {
       nav { padding: 1rem 5%; }
       .nav-links, .nav-cta { display: none; }
-      #home { padding: 7rem 5% 4rem; text-align: left; align-items: flex-start; }
+      #home { padding: 8rem 5% 4rem; text-align: left; align-items: flex-start; }
       .hero-actions { justify-content: flex-start; flex-wrap: wrap;}
       .stack-grid { justify-content: flex-start; }
       section { padding: 5rem 5%; }
       .belief-block, .f-row { grid-template-columns: 1fr; }
-      .foot-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .foot-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
   </style>
 </head>
@@ -214,85 +241,94 @@
   <a href="#home" class="nav-logo">Semantic<span>.</span>Rework</a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#protocol">About</a></li>
+    <li><a href="#expertise">Why Us</a></li>
+    <li><a href="#about">About</a></li>
   </ul>
   <a href="#contact" class="btn-primary btn-accent nav-cta">Start Project</a>
+  
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="Close">×</button>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#expertise" onclick="toggleMenu()">Why Us</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--accent)">Start Project</a>
+</div>
 
 <main>
 <section id="home">
   <div class="hero-glow"></div>
-  <div class="hero-badge"><span></span> HQ: Kolkata · Serving Global B2B</div>
+  <div class="hero-badge">A New Studio in Kolkata · Ready for Global Clients</div>
   <h1 class="hero-title">
-    High-Performance<br>
-    <span class="text-gradient">Web Engineering.</span>
+    Your Business Deserves<br>
+    <span class="text-gradient">A Better Website.</span>
   </h1>
   <p class="hero-sub">
-    We build lightning-fast corporate websites, scalable web applications, and custom SaaS frontends for ambitious businesses worldwide.
+    We are a modern web design studio building clean, fast, and highly responsive websites. Get premium agency quality with the dedicated attention of a fresh, hungry team.
   </p>
   <div class="hero-actions">
-    <a href="#contact" class="btn-primary btn-accent" style="padding: 0.8rem 1.5rem;">
-      Discuss Your Project
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px; margin-left:5px;"><line x1="5" y1="12" x2="11" y2="6"></line><polyline points="5 6 11 6 11 12"></polyline></svg>
+    <a href="#contact" class="btn-primary btn-accent" style="padding: 0.8rem 1.6rem; font-size: 1rem;">
+      Let's Talk
     </a>
-    <a href="#services" class="btn-primary" style="background: var(--surface); border: 1px solid var(--border); padding: 0.8rem 1.5rem;">
-      View Services
+    <a href="#services" class="btn-primary" style="padding: 0.8rem 1.6rem; font-size: 1rem;">
+      See What We Do
     </a>
   </div>
 
   <div class="stack-container">
-    <div class="stack-label">Our Technology Stack</div>
+    <div class="stack-label">Built with Modern Tools</div>
     <div class="stack-grid">
       <div class="stack-item">React & Next.js</div>
-      <div class="stack-item">Node.js</div>
-      <div class="stack-item">Python</div>
+      <div class="stack-item">Webflow</div>
       <div class="stack-item">Tailwind CSS</div>
-      <div class="stack-item">REST / GraphQL APIs</div>
-      <div class="stack-item">PostgreSQL</div>
-      <div class="stack-item">AWS & Vercel</div>
+      <div class="stack-item">Shopify</div>
+      <div class="stack-item">Custom HTML/CSS</div>
     </div>
   </div>
 </section>
 
 <section id="services">
   <div class="sec-header reveal">
-    <p class="section-label">Core Services</p>
-    <h2 class="section-title">Engineered Digital Platforms</h2>
-    <p class="section-desc">We move beyond templates. We architect web solutions designed to scale, load instantly, and convert visitors.</p>
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">Websites That Work For You</h2>
+    <p class="section-desc">Whether you need your first professional landing page or a complete digital overhaul, we are ready to build it.</p>
   </div>
   
   <div class="tier-grid">
     <div class="tier reveal">
-      <div class="tier-badge">Growth Layer</div>
-      <div class="tier-name">Corporate Web Platforms</div>
-      <p class="tier-desc">High-speed, SEO-optimized marketing websites built to generate leads and establish global authority.</p>
+      <div class="tier-badge">The Foundation</div>
+      <div class="tier-name">Business Websites</div>
+      <p class="tier-desc">Clean, multi-page websites perfect for local businesses, service agencies, and growing startups.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Custom UI/UX Design</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Headless CMS Integration</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Sub-second Load Times</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Responsive mobile-first design</span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Contact forms & lead capture</span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Basic on-page SEO setup</span></li>
       </ul>
     </div>
     
     <div class="tier featured reveal">
-      <div class="tier-badge">Software Layer</div>
-      <div class="tier-name">Custom Web Applications</div>
-      <p class="tier-desc">Complex frontend and backend development for SaaS products, internal tools, and interactive dashboards.</p>
+      <div class="tier-badge">Most Requested</div>
+      <div class="tier-name">Performance Redesigns</div>
+      <p class="tier-desc">Have an old, slow website? We will rebuild it from the ground up to look modern and load instantly.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>React / Next.js Frontends</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Secure User Authentication</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Scalable Database Architecture</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Modern UI/UX overhaul</span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Lightning-fast page speeds</span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Content & image optimization</span></li>
       </ul>
     </div>
     
     <div class="tier reveal">
-      <div class="tier-badge">Commerce Layer</div>
-      <div class="tier-name">E-Commerce & API Sync</div>
-      <p class="tier-desc">Robust online stores and seamless integrations connecting your website to CRMs, ERPs, or payment gateways.</p>
+      <div class="tier-badge">E-Commerce</div>
+      <div class="tier-name">Online Stores</div>
+      <p class="tier-desc">Start selling online with a beautiful, secure storefront designed to convert visitors into customers.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Custom Payment Flows</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Third-party API Integrations</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Inventory Management Sync</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Product catalog setup</span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Secure payment integration</span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Easy-to-use admin dashboard</span></li>
       </ul>
     </div>
   </div>
@@ -300,46 +336,46 @@
 
 <section id="expertise">
   <div class="sec-header reveal">
-    <p class="section-label">The Difference</p>
-    <h2 class="section-title">Why Engineering Matters</h2>
-    <p class="section-desc">Your website is software. We build it with the rigor and discipline it deserves.</p>
+    <span class="section-label">Why Choose Us</span>
+    <h2 class="section-title">The Startup Advantage</h2>
+    <p class="section-desc">As a newly launched studio, we bring a level of dedication and care that large, bloated agencies simply cannot match.</p>
   </div>
   
   <div class="uc-grid">
     <div class="uc-card reveal">
       <div class="uc-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <div class="uc-title">Performance Obsessed</div>
-      <div class="uc-desc">Slow websites lose customers. We write clean, optimized code to guarantee top-tier Core Web Vitals and instant page loads.</div>
+      <div class="uc-title">100% Dedicated Attention</div>
+      <div class="uc-desc">You are not just another ticket number to us. We take on fewer projects so we can give your business the absolute focus it deserves.</div>
     </div>
     <div class="uc-card reveal">
       <div class="uc-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       </div>
-      <div class="uc-title">Security First</div>
-      <div class="uc-desc">We implement modern security protocols, secure data transmission, and rigorous testing to protect your business and users.</div>
+      <div class="uc-title">Fast Turnarounds</div>
+      <div class="uc-desc">Because we are a small, agile team, we don't suffer from corporate red tape. We design, build, and launch faster.</div>
     </div>
     <div class="uc-card reveal">
       <div class="uc-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
-      <div class="uc-title">Scalable Architecture</div>
-      <div class="uc-desc">We don't box you in. Our tech stacks are chosen specifically so your platform can grow effortlessly as your traffic scales.</div>
+      <div class="uc-title">Clear Communication</div>
+      <div class="uc-desc">You will speak directly with the people building your website. No account managers, no confusing tech jargon.</div>
     </div>
   </div>
 </section>
 
-<section id="protocol">
+<section id="about">
   <div class="about-wrap">
     <div class="reveal">
-      <p class="section-label">About Us</p>
-      <h2 class="section-title">Logic Meets<br>Digital Design.</h2>
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">Engineers Building<br>Better Websites.</h2>
       <p class="section-desc" style="margin-bottom:1.5rem;">
-        Semantic Rework is a specialized web engineering studio. We aren't just graphic designers; we are developers who understand systems.
+        Semantic Rework is a fresh web design studio based out of Kolkata. We were founded by a team with deep backgrounds in engineering and systems logic.
       </p>
       <p class="section-desc">
-        Our engineering background means we write clean, logical code. We focus on how a platform functions, how secure it is, and how easily it can integrate with your existing business operations. We build digital assets that actually work for you.
+        We started this agency because we noticed how many small and medium businesses were settling for slow, broken, or outdated websites. We apply our engineering discipline to web design—ensuring that every site we build looks great, functions perfectly, and helps your business grow.
       </p>
     </div>
     
@@ -347,29 +383,29 @@
       <div class="belief">
         <span class="belief-n">01</span>
         <div class="belief-body">
-          <strong>Strategic Planning</strong>
-          <p>We scope every technical requirement before writing a single line of code.</p>
+          <strong>Listen First</strong>
+          <p>We start by understanding exactly what your business needs to succeed online.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">02</span>
         <div class="belief-body">
-          <strong>Modern Stack</strong>
-          <p>We utilize the latest frameworks to ensure your site is future-proof.</p>
+          <strong>Design with Purpose</strong>
+          <p>We don't just make it pretty; we design sites meant to guide visitors to contact you.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">03</span>
         <div class="belief-body">
-          <strong>Transparent Process</strong>
-          <p>Clear communication and milestone tracking from kickoff to launch.</p>
+          <strong>Build & Test</strong>
+          <p>We write clean code and test across all devices to ensure a flawless experience.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">04</span>
         <div class="belief-body">
-          <strong>Ongoing Support</strong>
-          <p>We provide continuous maintenance to keep your systems running flawlessly.</p>
+          <strong>Launch & Support</strong>
+          <p>We help you go live and remain available to support you as your business grows.</p>
         </div>
       </div>
     </div>
@@ -379,10 +415,10 @@
 <section id="contact">
   <div class="contact-wrap">
     <div class="c-info reveal">
-      <p class="section-label">Start Here</p>
-      <h2 class="section-title">Build your<br>next platform.</h2>
+      <span class="section-label">Let's Connect</span>
+      <h2 class="section-title">Ready to start<br>your project?</h2>
       <p class="section-desc" style="margin-bottom: 2rem;">
-        Tell us about your project requirements. Our engineering team will review your goals and schedule a technical discovery call.
+        Fill out the form with a few details about what you are looking for. We will get back to you within 24 hours to schedule a casual chat.
       </p>
       
       <div class="c-detail-list">
@@ -400,7 +436,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
           <div>
-            <div class="c-detail-lbl">Global HQ</div>
+            <div class="c-detail-lbl">Based In</div>
             <div class="c-detail-val">Kolkata, India</div>
           </div>
         </div>
@@ -413,7 +449,7 @@
       <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit()">
         
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New Web Project Inquiry — Semantic Rework">
+        <input type="hidden" name="_subject" value="New Website Inquiry — Semantic Rework">
         <input type="hidden" name="_template" value="table">
         
         <div id="formMsg" class="form-msg"></div>
@@ -431,39 +467,39 @@
         
         <div class="f-row">
           <div class="f-group">
-            <label for="email">Work Email</label>
-            <input id="email" name="email" type="email" placeholder="john@company.com" required />
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="john@example.com" required />
           </div>
           <div class="f-group">
             <label for="phone">Phone Number</label>
-            <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" required />
+            <input id="phone" name="phone" type="tel" placeholder="Your phone number" />
           </div>
         </div>
         
         <div class="f-group">
-          <label for="service">Project Type</label>
+          <label for="service">What do you need help with?</label>
           <select id="service" name="service" required>
-            <option value="" disabled selected>Select project requirement...</option>
-            <option>Corporate Web Platform</option>
-            <option>Custom Web Application / SaaS</option>
-            <option>E-Commerce Development</option>
-            <option>API / System Integration</option>
+            <option value="" disabled selected>Select an option...</option>
+            <option>Building a new website from scratch</option>
+            <option>Redesigning an old website</option>
+            <option>Setting up an e-commerce store</option>
+            <option>Just have a general question</option>
           </select>
         </div>
 
         <div class="f-group">
           <label for="msg">Project Details</label>
-          <textarea id="msg" name="message" placeholder="Tell us about your business goals, required features, and timeline..." required></textarea>
+          <textarea id="msg" name="message" placeholder="Tell us a little bit about your business and what you want to achieve..." required></textarea>
         </div>
         
-        <button type="submit" class="btn-primary btn-accent f-submit" id="submitBtn">Send Project Details</button>
+        <button type="submit" class="btn-primary btn-accent f-submit" id="submitBtn">Send Message</button>
       </form>
     </div>
   </div>
 </section>
 </main>
 
-<a href="https://wa.me/918250278119?text=Hello%20Semantic%20Rework,%20I%20would%20like%20to%20discuss%20a%20web%20development%20project." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+<a href="https://wa.me/918250278119?text=Hi%20Semantic%20Rework,%20I'd%20like%20to%20chat%20about%20a%20website%20project." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -471,27 +507,27 @@
   <div class="foot-inner">
     <div class="foot-brand">
       <h4>Semantic<span>.</span>Rework</h4>
-      <p>High-performance web engineering studio building platforms that scale.</p>
+      <p>A modern web design and development studio building digital experiences that help businesses grow.</p>
     </div>
     <div class="foot-col">
       <h5>Services</h5>
       <ul>
-        <li><a href="#services">Corporate Sites</a></li>
-        <li><a href="#services">Web Applications</a></li>
+        <li><a href="#services">Business Websites</a></li>
+        <li><a href="#services">Redesigns</a></li>
         <li><a href="#services">E-Commerce</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h5>Agency</h5>
+      <h5>Company</h5>
       <ul>
-        <li><a href="#protocol">About Us</a></li>
+        <li><a href="#about">Our Story</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
     <p>© 2026 Semantic Rework. All rights reserved.</p>
-    <p>HQ: Kolkata, India</p>
+    <p>Kolkata, India</p>
   </div>
 </footer>
 
@@ -501,7 +537,10 @@
 
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20));
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  
+  function toggleMenu() { 
+    document.getElementById('mobileMenu').classList.toggle('open'); 
+  }
   
   (() => {
     const obs = new IntersectionObserver((entries) => {
@@ -530,13 +569,13 @@
       const msgBox = document.getElementById('formMsg');
       
       form.reset(); 
-      msgBox.innerHTML = '✓ Message sent successfully. We will be in touch shortly.';
+      msgBox.innerHTML = '✓ Message sent successfully! We will be in touch soon.';
       msgBox.classList.add('msg-success', 'show');
       btn.textContent = 'Sent ✓';
       
       setTimeout(() => { 
         msgBox.classList.remove('show'); 
-        btn.textContent = 'Send Project Details'; 
+        btn.textContent = 'Send Message'; 
         btn.disabled = false; 
       }, 5000);
       
