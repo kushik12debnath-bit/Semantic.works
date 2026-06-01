@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <meta name="description" content="Semantic Rework engineers industrial web dashboards, custom HMIs, and secure hardware-to-cloud integrations." />
-  <meta name="keywords" content="IoT digitization, Modbus web dashboard, hardware to cloud, ESP32 integration, custom HMI, Semantic Rework" />
+  <meta name="description" content="Semantic Rework is a web engineering studio building high-performance corporate platforms, custom web applications, and SaaS frontends." />
+  <meta name="keywords" content="web development, SaaS frontend, custom web apps, high-performance websites, corporate web platforms, Semantic Rework" />
   <meta name="author" content="Semantic Rework" />
   
-  <title>Semantic Rework — Industrial Web Architecture</title>
+  <title>Semantic Rework — High-Performance Web Engineering</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +23,7 @@
       --surface-elevated: #141414;
       --border: #222222;
       --border-hover: #444444;
-      --accent: #0070f3; 
+      --accent: #0070f3; /* Vercel/Modern Tech Blue */
       --accent-glow: rgba(0, 112, 243, 0.2);
       --gradient: linear-gradient(135deg, #0070f3 0%, #00dfd8 100%);
       --text: #f5f5f5;
@@ -95,7 +95,7 @@
     .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 650px; line-height: 1.6; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s 0.3s forwards; }
     .hero-actions { display: flex; gap: 1rem; opacity: 0; animation: fadeUp 0.6s 0.4s forwards; }
 
-    /* TECH STACK SECTION (NEW) */
+    /* TECH STACK SECTION */
     .stack-container { margin-top: 5rem; width: 100%; max-width: 900px; border-top: 1px solid var(--border); padding-top: 3rem; opacity: 0; animation: fadeUp 0.6s 0.5s forwards; }
     .stack-label { font-family: var(--fm); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.5rem; }
     .stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
@@ -111,8 +111,8 @@
     .section-desc { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.6; }
     .sec-header { margin-bottom: 4rem; }
 
-    /* ARCHITECTURE (SOLUTIONS) */
-    #architecture { background: var(--surface); border-top: 1px solid var(--border); }
+    /* SERVICES */
+    #services { background: var(--surface); border-top: 1px solid var(--border); }
     .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
     .tier { background: var(--bg); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; transition: 0.3s; display: flex; flex-direction: column; }
     .tier:hover { border-color: var(--border-hover); transform: translateY(-4px); }
@@ -126,8 +126,8 @@
     .tier-list li svg { flex-shrink: 0; width: 16px; height: 16px; color: var(--accent); }
     .tier-list li strong { color: var(--text); font-weight: 500; }
     
-    /* USE CASES (NEW) */
-    #use-cases { background: var(--bg); }
+    /* EXPERTISE */
+    #expertise { background: var(--bg); }
     .uc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
     .uc-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; transition: 0.3s; }
     .uc-card:hover { border-color: var(--accent); background: var(--surface-elevated);}
@@ -167,10 +167,6 @@
     }
     .f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
     .f-group textarea { resize: vertical; min-height: 100px; }
-    
-    input[type="file"] { padding: 0.8rem; border: 1px dashed var(--border); cursor: pointer; color: var(--muted); background: var(--bg);}
-    input[type="file"]::file-selector-button { background: var(--surface-elevated); color: var(--text); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; margin-right: 1rem; font-family: var(--fb); font-size: 0.8rem; transition: 0.2s; }
-    .file-hint { font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem; }
     
     .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; border-radius: 6px;}
     .form-msg { display: none; border-radius: 6px; padding: 1rem; font-size: 0.9rem; font-weight: 500; text-align: center; margin-bottom: 1rem;}
@@ -217,11 +213,11 @@
 <nav id="navbar">
   <a href="#home" class="nav-logo">Semantic<span>.</span>Rework</a>
   <ul class="nav-links">
-    <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#use-cases">Use Cases</a></li>
-    <li><a href="#protocol">Protocol</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#protocol">About</a></li>
   </ul>
-  <a href="#contact" class="btn-primary btn-accent nav-cta">Deploy Project</a>
+  <a href="#contact" class="btn-primary btn-accent nav-cta">Start Project</a>
 </nav>
 
 <main>
@@ -229,107 +225,107 @@
   <div class="hero-glow"></div>
   <div class="hero-badge"><span></span> HQ: Kolkata · Serving Global B2B</div>
   <h1 class="hero-title">
-    Industrial Data.<br>
-    <span class="text-gradient">Web Precision.</span>
+    High-Performance<br>
+    <span class="text-gradient">Web Engineering.</span>
   </h1>
   <p class="hero-sub">
-    We engineer high-performance web dashboards and cloud integrations tailored for industrial automation, edge devices, and heavy machinery.
+    We build lightning-fast corporate websites, scalable web applications, and custom SaaS frontends for ambitious businesses worldwide.
   </p>
   <div class="hero-actions">
     <a href="#contact" class="btn-primary btn-accent" style="padding: 0.8rem 1.5rem;">
-      Initialize Project
+      Discuss Your Project
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px; margin-left:5px;"><line x1="5" y1="12" x2="11" y2="6"></line><polyline points="5 6 11 6 11 12"></polyline></svg>
     </a>
-    <a href="#architecture" class="btn-primary" style="background: var(--surface); border: 1px solid var(--border); padding: 0.8rem 1.5rem;">
-      View Architecture
+    <a href="#services" class="btn-primary" style="background: var(--surface); border: 1px solid var(--border); padding: 0.8rem 1.5rem;">
+      View Services
     </a>
   </div>
 
   <div class="stack-container">
-    <div class="stack-label">Supported Protocols & Tech Stack</div>
+    <div class="stack-label">Our Technology Stack</div>
     <div class="stack-grid">
-      <div class="stack-item">Modbus TCP/RTU</div>
-      <div class="stack-item">MQTT</div>
-      <div class="stack-item">REST API</div>
-      <div class="stack-item">Raspberry Pi</div>
-      <div class="stack-item">ESP32 / Microcontrollers</div>
+      <div class="stack-item">React & Next.js</div>
+      <div class="stack-item">Node.js</div>
       <div class="stack-item">Python</div>
-      <div class="stack-item">React / Next.js</div>
+      <div class="stack-item">Tailwind CSS</div>
+      <div class="stack-item">REST / GraphQL APIs</div>
+      <div class="stack-item">PostgreSQL</div>
+      <div class="stack-item">AWS & Vercel</div>
     </div>
   </div>
 </section>
 
-<section id="architecture">
+<section id="services">
   <div class="sec-header reveal">
-    <p class="section-label">Core Solutions</p>
-    <h2 class="section-title">Engineered Web Interfaces</h2>
-    <p class="section-desc">Data-driven web architectures built strictly for industrial operations.</p>
+    <p class="section-label">Core Services</p>
+    <h2 class="section-title">Engineered Digital Platforms</h2>
+    <p class="section-desc">We move beyond templates. We architect web solutions designed to scale, load instantly, and convert visitors.</p>
   </div>
   
   <div class="tier-grid">
     <div class="tier reveal">
-      <div class="tier-badge">Visual Layer</div>
-      <div class="tier-name">Industrial Dashboards</div>
-      <p class="tier-desc">Custom web interfaces engineered for real-time sensor tracking and remote PLC array monitoring.</p>
+      <div class="tier-badge">Growth Layer</div>
+      <div class="tier-name">Corporate Web Platforms</div>
+      <p class="tier-desc">High-speed, SEO-optimized marketing websites built to generate leads and establish global authority.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Direct PLC Parsing</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Live Data Streams (<50ms)</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Historical Analytics Export</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Custom UI/UX Design</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Headless CMS Integration</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Sub-second Load Times</strong></span></li>
       </ul>
     </div>
     
     <div class="tier featured reveal">
-      <div class="tier-badge">Data Pipeline</div>
-      <div class="tier-name">Hardware-to-Cloud Sync</div>
-      <p class="tier-desc">Secure edge-to-cloud architectures logging data from microcontrollers directly to your web servers.</p>
+      <div class="tier-badge">Software Layer</div>
+      <div class="tier-name">Custom Web Applications</div>
+      <p class="tier-desc">Complex frontend and backend development for SaaS products, internal tools, and interactive dashboards.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Edge Node Configuration</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Secure MQTT Broker Setup</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>NABL-Compliant Logging</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>React / Next.js Frontends</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Secure User Authentication</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Scalable Database Architecture</strong></span></li>
       </ul>
     </div>
     
     <div class="tier reveal">
-      <div class="tier-badge">Control Layer</div>
-      <div class="tier-name">Web-Based HMIs</div>
-      <p class="tier-desc">Scalable Human-Machine Interfaces accessed via the browser to manage alarms and control machinery.</p>
+      <div class="tier-badge">Commerce Layer</div>
+      <div class="tier-name">E-Commerce & API Sync</div>
+      <p class="tier-desc">Robust online stores and seamless integrations connecting your website to CRMs, ERPs, or payment gateways.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Bi-directional Machine Control</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Automated Alert Triggers</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Role-based Access Security</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Custom Payment Flows</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Third-party API Integrations</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Inventory Management Sync</strong></span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<section id="use-cases">
+<section id="expertise">
   <div class="sec-header reveal">
-    <p class="section-label">Industries</p>
-    <h2 class="section-title">Built for Heavy Data</h2>
-    <p class="section-desc">We deploy web interfaces for environments where data accuracy is critical.</p>
+    <p class="section-label">The Difference</p>
+    <h2 class="section-title">Why Engineering Matters</h2>
+    <p class="section-desc">Your website is software. We build it with the rigor and discipline it deserves.</p>
   </div>
   
   <div class="uc-grid">
     <div class="uc-card reveal">
       <div class="uc-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
-      <div class="uc-title">Manufacturing Floors</div>
-      <div class="uc-desc">OEE tracking, machine downtime analytics, and centralized PLC monitoring across plant lines.</div>
+      <div class="uc-title">Performance Obsessed</div>
+      <div class="uc-desc">Slow websites lose customers. We write clean, optimized code to guarantee top-tier Core Web Vitals and instant page loads.</div>
     </div>
     <div class="uc-card reveal">
       <div class="uc-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       </div>
-      <div class="uc-title">Calibration & Testing</div>
-      <div class="uc-desc">Automated data logging for thermal and electrical instruments ensuring compliance and accuracy.</div>
+      <div class="uc-title">Security First</div>
+      <div class="uc-desc">We implement modern security protocols, secure data transmission, and rigorous testing to protect your business and users.</div>
     </div>
     <div class="uc-card reveal">
       <div class="uc-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
       </div>
-      <div class="uc-title">Energy & Smart Grids</div>
-      <div class="uc-desc">Real-time power consumption dashboards mapping electrical systems to cloud databases.</div>
+      <div class="uc-title">Scalable Architecture</div>
+      <div class="uc-desc">We don't box you in. Our tech stacks are chosen specifically so your platform can grow effortlessly as your traffic scales.</div>
     </div>
   </div>
 </section>
@@ -337,13 +333,13 @@
 <section id="protocol">
   <div class="about-wrap">
     <div class="reveal">
-      <p class="section-label">Our Agency</p>
-      <h2 class="section-title">Fluent in both<br>Code & Hardware.</h2>
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">Logic Meets<br>Digital Design.</h2>
       <p class="section-desc" style="margin-bottom:1.5rem;">
-        Semantic Rework bridges the gap between traditional web development and industrial IoT automation.
+        Semantic Rework is a specialized web engineering studio. We aren't just graphic designers; we are developers who understand systems.
       </p>
       <p class="section-desc">
-        Our core team is rooted in Electrical & Electronics Engineering. This unique overlap allows us to translate the raw logic of wire harnesses and edge devices into highly available web platforms for a global clientele.
+        Our engineering background means we write clean, logical code. We focus on how a platform functions, how secure it is, and how easily it can integrate with your existing business operations. We build digital assets that actually work for you.
       </p>
     </div>
     
@@ -351,29 +347,29 @@
       <div class="belief">
         <span class="belief-n">01</span>
         <div class="belief-body">
-          <strong>Data Integrity</strong>
-          <p>Industrial data is critical. We ensure secure, zero-loss transmission.</p>
+          <strong>Strategic Planning</strong>
+          <p>We scope every technical requirement before writing a single line of code.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">02</span>
         <div class="belief-body">
-          <strong>Low Latency</strong>
-          <p>Real-time monitoring requires architecture built for speed.</p>
+          <strong>Modern Stack</strong>
+          <p>We utilize the latest frameworks to ensure your site is future-proof.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">03</span>
         <div class="belief-body">
-          <strong>Clean Interfaces</strong>
-          <p>Simplifying complex machine logic into usable operator dashboards.</p>
+          <strong>Transparent Process</strong>
+          <p>Clear communication and milestone tracking from kickoff to launch.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">04</span>
         <div class="belief-body">
-          <strong>Scalability</strong>
-          <p>Cloud architectures that scale seamlessly from one node to thousands.</p>
+          <strong>Ongoing Support</strong>
+          <p>We provide continuous maintenance to keep your systems running flawlessly.</p>
         </div>
       </div>
     </div>
@@ -383,10 +379,10 @@
 <section id="contact">
   <div class="contact-wrap">
     <div class="c-info reveal">
-      <p class="section-label">Initialize</p>
-      <h2 class="section-title">Digitize your<br>infrastructure.</h2>
+      <p class="section-label">Start Here</p>
+      <h2 class="section-title">Build your<br>next platform.</h2>
       <p class="section-desc" style="margin-bottom: 2rem;">
-        Provide your hardware specifications and platform requirements. Our engineers will review the technical scope and initiate contact.
+        Tell us about your project requirements. Our engineering team will review your goals and schedule a technical discovery call.
       </p>
       
       <div class="c-detail-list">
@@ -395,7 +391,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </div>
           <div>
-            <div class="c-detail-lbl">Email Protocol</div>
+            <div class="c-detail-lbl">Email Us</div>
             <div class="c-detail-val">kushik12debnath@gmail.com</div>
           </div>
         </div>
@@ -414,10 +410,10 @@
     <div class="reveal">
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleIframeLoad(); }"></iframe>
 
-      <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data" target="hidden_iframe" onsubmit="handleFormSubmit()">
+      <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit()">
         
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New Technical Brief — Semantic Rework">
+        <input type="hidden" name="_subject" value="New Web Project Inquiry — Semantic Rework">
         <input type="hidden" name="_template" value="table">
         
         <div id="formMsg" class="form-msg"></div>
@@ -439,41 +435,35 @@
             <input id="email" name="email" type="email" placeholder="john@company.com" required />
           </div>
           <div class="f-group">
-            <label for="phone">Contact Number</label>
+            <label for="phone">Phone Number</label>
             <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" required />
           </div>
         </div>
         
         <div class="f-group">
-          <label for="service">Architecture Type</label>
+          <label for="service">Project Type</label>
           <select id="service" name="service" required>
-            <option value="" disabled selected>Select deployment requirement...</option>
-            <option>Industrial Web Dashboard</option>
-            <option>Hardware-to-Cloud Integration</option>
-            <option>Custom Web-based HMI</option>
-            <option>System Consultation</option>
+            <option value="" disabled selected>Select project requirement...</option>
+            <option>Corporate Web Platform</option>
+            <option>Custom Web Application / SaaS</option>
+            <option>E-Commerce Development</option>
+            <option>API / System Integration</option>
           </select>
         </div>
 
         <div class="f-group">
-          <label for="msg">System Specifications</label>
-          <textarea id="msg" name="message" placeholder="Detail your edge devices, PLCs, communication protocols, and expected data volume..." required></textarea>
-        </div>
-
-        <div class="f-group">
-          <label for="docUpload">Attach Schematic / Brief (Optional)</label>
-          <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" onchange="validateFileSize(this)" />
-          <span class="file-hint">PDF, Word, Excel, ZIP. Max size: 10MB.</span>
+          <label for="msg">Project Details</label>
+          <textarea id="msg" name="message" placeholder="Tell us about your business goals, required features, and timeline..." required></textarea>
         </div>
         
-        <button type="submit" class="btn-primary btn-accent f-submit" id="submitBtn">Transmit Technical Brief</button>
+        <button type="submit" class="btn-primary btn-accent f-submit" id="submitBtn">Send Project Details</button>
       </form>
     </div>
   </div>
 </section>
 </main>
 
-<a href="https://wa.me/918250278119?text=Hello%20Semantic%20Rework,%20I%20need%20to%20discuss%20an%20industrial%20web%20deployment." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+<a href="https://wa.me/918250278119?text=Hello%20Semantic%20Rework,%20I%20would%20like%20to%20discuss%20a%20web%20development%20project." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -481,26 +471,26 @@
   <div class="foot-inner">
     <div class="foot-brand">
       <h4>Semantic<span>.</span>Rework</h4>
-      <p>Specialized tech agency bridging the gap between industrial hardware and the web.</p>
+      <p>High-performance web engineering studio building platforms that scale.</p>
     </div>
     <div class="foot-col">
-      <h5>Architectures</h5>
+      <h5>Services</h5>
       <ul>
-        <li><a href="#architecture">Dashboards</a></li>
-        <li><a href="#architecture">Cloud Logging</a></li>
-        <li><a href="#architecture">Web HMIs</a></li>
+        <li><a href="#services">Corporate Sites</a></li>
+        <li><a href="#services">Web Applications</a></li>
+        <li><a href="#services">E-Commerce</a></li>
       </ul>
     </div>
     <div class="foot-col">
       <h5>Agency</h5>
       <ul>
-        <li><a href="#protocol">Protocol</a></li>
+        <li><a href="#protocol">About Us</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
-    <p>© 2026 Semantic Rework. All systems nominal.</p>
+    <p>© 2026 Semantic Rework. All rights reserved.</p>
     <p>HQ: Kolkata, India</p>
   </div>
 </footer>
@@ -520,21 +510,6 @@
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   })();
 
-  function validateFileSize(input) {
-    const maxSize = 10 * 1024 * 1024; // 10MB
-    const submitBtn = document.getElementById('submitBtn');
-
-    if (input.files && input.files[0]) {
-      if (input.files[0].size > maxSize) {
-        alert("Payload exceeds 10MB limit. Please compress your schematic.");
-        submitBtn.disabled = true; 
-        input.value = ''; 
-      } else {
-        submitBtn.disabled = false;
-      }
-    }
-  }
-
   let submitted = false;
 
   function handleFormSubmit() {
@@ -543,7 +518,7 @@
     const msgBox = document.getElementById('formMsg');
     
     btn.disabled = true; 
-    btn.textContent = 'Transmitting...';
+    btn.textContent = 'Sending...';
     msgBox.className = 'form-msg'; 
     msgBox.innerHTML = '';
   }
@@ -555,13 +530,13 @@
       const msgBox = document.getElementById('formMsg');
       
       form.reset(); 
-      msgBox.innerHTML = '✓ Brief transmitted successfully. Awaiting response.';
+      msgBox.innerHTML = '✓ Message sent successfully. We will be in touch shortly.';
       msgBox.classList.add('msg-success', 'show');
-      btn.textContent = 'Transmitted ✓';
+      btn.textContent = 'Sent ✓';
       
       setTimeout(() => { 
         msgBox.classList.remove('show'); 
-        btn.textContent = 'Transmit Technical Brief'; 
+        btn.textContent = 'Send Project Details'; 
         btn.disabled = false; 
       }, 5000);
       
