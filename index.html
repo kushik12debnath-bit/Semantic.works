@@ -12,26 +12,26 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
   
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
-      --bg: #030509; 
-      --surface: #0a0f18; 
-      --card: rgba(255, 255, 255, 0.02);
-      --border: rgba(255, 255, 255, 0.06);
-      --border-hover: rgba(255, 255, 255, 0.15);
-      --accent: #00f0c8;
-      --accent-glow: rgba(0, 240, 200, 0.2);
-      --gradient: linear-gradient(135deg, #00f0c8 0%, #2e9cff 100%);
-      --text: #ffffff;
-      --muted: #8b99ae;
+      /* Deep Tech / SaaS Palette */
+      --bg: #000000; 
+      --surface: #0a0a0a; 
+      --surface-elevated: #111111;
+      --border: #1f1f1f;
+      --border-hover: #333333;
+      --accent: #0070f3; /* Engineering Blue */
+      --accent-glow: rgba(0, 112, 243, 0.25);
+      --gradient: linear-gradient(135deg, #0070f3 0%, #00dfd8 100%); /* Blue to Cyan */
+      --text: #ededed;
+      --muted: #888888;
       
-      --fd: 'Syne', sans-serif;
-      --fb: 'DM Sans', sans-serif;
-      --fm: 'Space Mono', monospace;
+      --fb: 'Inter', sans-serif;
+      --fm: 'JetBrains Mono', monospace;
     }
 
     html { scroll-behavior: smooth; }
@@ -40,229 +40,260 @@
       background: var(--bg); 
       color: var(--text); 
       font-family: var(--fb); 
-      font-weight: 300; 
-      line-height: 1.7; 
+      font-weight: 400; 
+      line-height: 1.6; 
       overflow-x: hidden; 
+      -webkit-font-smoothing: antialiased;
     }
     
-    ::selection { background: var(--accent); color: #000; }
-    ::-webkit-scrollbar { width: 5px; }
+    ::selection { background: rgba(0, 112, 243, 0.3); color: #fff; }
+    ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
 
+    /* Engineering Dot Grid Background */
     body::before {
       content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.6;
     }
     
     nav, main, footer { position: relative; z-index: 1; }
 
-    /* NAV */
+    /* NAV - Sleek & Minimal */
     nav { 
       position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
       display: flex; align-items: center; justify-content: space-between; 
       padding: 1.2rem 5%; border-bottom: 1px solid transparent; 
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+      transition: all 0.3s ease; 
     }
     nav.scrolled { 
-      background: rgba(3, 5, 9, 0.75); 
-      backdrop-filter: blur(16px); 
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(0, 0, 0, 0.8); 
+      backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border); 
       padding: 1rem 5%;
     }
-    .nav-logo { font-family: var(--fd); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 0.2rem;}
-    .nav-logo span { color: var(--accent); font-size: 1.5rem; line-height: 0;}
-    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.3s; font-weight: 400; }
+    .nav-logo { font-family: var(--fb); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.04em; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 0.2rem; transition: 0.3s;}
+    .nav-logo:hover { opacity: 0.8; }
+    .nav-logo span { color: var(--accent); }
+    
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: all 0.2s; font-weight: 500; }
     .nav-links a:hover { color: var(--text); }
     
+    /* Primary Button - Sharp Startup Style */
     .btn-primary { 
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: var(--text); color: var(--bg); 
       font-family: var(--fb); font-size: 0.85rem; font-weight: 600; 
-      padding: 0.7rem 1.5rem; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; 
-      transition: all 0.3s ease; 
+      padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; border: none; cursor: pointer; 
+      transition: all 0.2s ease; 
     }
-    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 20px var(--accent-glow); }
-    .btn-primary svg { width: 14px; height: 14px; transition: transform 0.3s; }
-    .btn-primary:hover svg { transform: translateX(3px); }
-    .nav-cta { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+    .btn-primary:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(255,255,255,0.1); }
+    .btn-primary svg { width: 14px; height: 14px; transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(2px); }
+    
+    /* Accent Button */
+    .btn-accent {
+      background: var(--accent); color: #fff;
+    }
+    .btn-accent:hover {
+      background: #005bb5; box-shadow: 0 4px 14px var(--accent-glow);
+    }
 
+    /* Mobile Menu */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; display: block; transition: 0.3s; }
-    .mobile-menu { position: fixed; inset: 0; z-index: 99; background: rgba(3,5,9,0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; transform: translateY(-100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); display: block; transition: 0.3s; }
+    .mobile-menu { position: fixed; inset: 0; z-index: 99; background: rgba(0,0,0,0.98); backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: transform 0.4s ease; opacity: 0; }
     .mobile-menu.open { transform: translateY(0); opacity: 1; }
-    .mobile-menu a { font-family: var(--fd); font-size: 2rem; font-weight: 700; color: var(--text); text-decoration: none; transition: 0.3s; }
-    .mobile-menu a:hover { color: var(--accent); }
-    .mobile-close { position: absolute; top: 1.5rem; right: 5%; font-size: 2.5rem; color: var(--muted); cursor: pointer; background: none; border: none; }
+    .mobile-menu a { font-family: var(--fb); font-size: 1.5rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: 0.2s; }
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-close { position: absolute; top: 1.5rem; right: 5%; font-size: 2.5rem; color: var(--muted); cursor: pointer; background: none; border: none; transition: 0.2s;}
+    .mobile-close:hover { color: var(--text); }
 
-    /* HERO */
-    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 12rem 5% 6rem; position: relative; overflow: hidden; }
-    .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 10%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 10%, transparent 80%); }
-    .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vh; pointer-events: none; background: radial-gradient(circle, rgba(0,240,200,0.08) 0%, rgba(46,156,255,0.05) 30%, transparent 70%); }
+    /* HERO SECTION */
+    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 5% 6rem; position: relative; overflow: hidden; align-items: center; text-align: center; }
     
-    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-glow { position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vh; pointer-events: none; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%); }
     
-    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards; backdrop-filter: blur(5px); }
-    .hero-badge span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; display: flex; flex-direction: column; align-items: center;}
     
-    h1.hero-title { font-family: var(--fd); font-weight: 800; font-size: clamp(3rem, 7vw, 6rem); line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.4s ease forwards; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--fm); font-size: 0.75rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 50px; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.6s 0.1s ease forwards; }
+    .hero-badge span { width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+    
+    h1.hero-title { font-family: var(--fb); font-weight: 800; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.2s ease forwards; }
     .text-gradient { background: var(--gradient); -webkit-background-clip: text; color: transparent; }
     
-    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; line-height: 1.8; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s 0.6s ease forwards; }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; line-height: 1.6; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s 0.3s ease forwards; }
     .hero-sub strong { color: var(--text); font-weight: 500; }
     
-    .hero-actions { display: flex; align-items: center; gap: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.8s ease forwards; }
+    .hero-actions { display: flex; align-items: center; gap: 1rem; opacity: 0; animation: fadeUp 0.6s 0.4s ease forwards; }
     
-    .hero-stats { display: flex; gap: 4rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); opacity: 0; animation: fadeUp 0.8s 1s ease forwards; }
-    .stat-num { font-family: var(--fd); font-size: 2.2rem; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -0.02em; }
-    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
+    /* Technical Stats Bar */
+    .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); opacity: 0; animation: fadeUp 0.6s 0.5s ease forwards; justify-content: center;}
+    .stat-num { font-family: var(--fm); font-size: 1.5rem; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem; font-family: var(--fb); text-transform: uppercase; letter-spacing: 0.05em;}
 
-    .scroll-indicator { position: absolute; bottom: 2rem; left: 5%; display: flex; align-items: center; gap: 1rem; font-family: var(--fm); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0; animation: fadeUp 0.8s 1.2s ease forwards; }
-    .scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
-    .scroll-line::after { content: ''; position: absolute; top: 0; left: 0; width: 1px; height: 15px; background: var(--accent); animation: scrollDown 2s infinite ease-in-out; }
-
-    /* SHARED */
-    section { padding: 8rem 5%; }
-    .section-label { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-    .section-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
-    .section-title { font-family: var(--fd); font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
-    .section-desc { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
+    /* SHARED SECTION STYLES */
+    section { padding: 6rem 5%; }
+    .section-label { font-family: var(--fm); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600;}
+    .section-title { font-family: var(--fb); font-weight: 700; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; }
+    .section-desc { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.6; }
     .sec-header { margin-bottom: 4rem; }
 
-    /* TIERS -> REPURPOSED AS CORE SOLUTIONS */
-    #solutions { background: var(--surface); position: relative; }
-    .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .tier { background: var(--bg); border: 1px solid var(--border); padding: 3rem 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; }
-    .tier:hover { transform: translateY(-8px); border-color: var(--border-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-    .tier.featured { border-color: rgba(0, 240, 200, 0.3); background: linear-gradient(180deg, rgba(0,240,200,0.03) 0%, transparent 100%), var(--bg); }
-    .tier.featured:hover { border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,240,200,0.1); }
-    .tier-badge { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); background: var(--surface); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 50px; display: inline-block; margin-bottom: 1.5rem; align-self: flex-start; }
-    .tier.featured .tier-badge { background: rgba(0,240,200,0.1); color: var(--accent); border-color: rgba(0,240,200,0.2); }
-    .tier-name { font-family: var(--fd); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: var(--text); line-height: 1.2;}
-    .tier-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; flex-grow: 1; }
-    .tier-list li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.8rem; align-items: flex-start; }
-    .tier-list li svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); margin-top: 3px; }
+    /* CORE SOLUTIONS CARDS - Minimalist & Sharp */
+    #solutions { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);}
+    .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    
+    .tier { 
+      background: var(--bg); border: 1px solid var(--border); padding: 2.5rem; 
+      border-radius: 12px; position: relative; overflow: hidden; 
+      transition: all 0.3s ease; display: flex; flex-direction: column;
+    }
+    .tier:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    
+    /* Highlighted Card */
+    .tier.featured { border-color: var(--accent); background: linear-gradient(180deg, rgba(0,112,243,0.03) 0%, var(--bg) 100%); }
+    .tier.featured:hover { box-shadow: 0 10px 30px var(--accent-glow); }
+    
+    .tier-badge { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); background: var(--surface-elevated); border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 4px; display: inline-block; margin-bottom: 1.5rem; align-self: flex-start; }
+    .tier.featured .tier-badge { background: rgba(0,112,243,0.1); color: var(--accent); border-color: rgba(0,112,243,0.2); }
+    
+    .tier-name { font-family: var(--fb); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.8rem; color: var(--text); }
+    .tier-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    
+    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem; flex-grow: 1; }
+    .tier-list li { font-size: 0.85rem; color: var(--muted); display: flex; gap: 0.8rem; align-items: center; }
+    .tier-list li svg { flex-shrink: 0; width: 16px; height: 16px; color: var(--accent); }
     .tier-list li strong { color: var(--text); font-weight: 500; }
     
-    /* SERVICES -> REPURPOSED AS EXPERTISE */
+    /* EXPERTISE SECTION - Using SVGs instead of Emojis */
     #expertise { background: var(--bg); }
-    .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .srv { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 16px; transition: all 0.4s ease; }
-    .srv:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-5px); }
-    .srv-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.8rem; transition: all 0.4s; }
-    .srv:hover .srv-icon { background: var(--accent); color: #000; border-color: var(--accent); }
-    .srv-title { font-family: var(--fd); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--text); }
-    .srv-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
+    .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .srv { background: var(--surface); border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; transition: all 0.3s ease; }
+    .srv:hover { border-color: #444; background: var(--surface-elevated);}
+    .srv-icon { width: 48px; height: 48px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--accent); transition: 0.3s; }
+    .srv-icon svg { width: 24px; height: 24px; }
+    .srv:hover .srv-icon { border-color: var(--accent); background: rgba(0,112,243,0.05); }
+    .srv-title { font-family: var(--fb); font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.8rem; color: var(--text); }
+    .srv-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
-    /* ABOUT */
-    #about { background: var(--surface); }
-    .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-    .belief-block { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
-    .belief { background: var(--bg); border: 1px solid var(--border); padding: 2rem; border-radius: 12px; transition: 0.3s; }
-    .belief:hover { border-color: var(--accent); }
-    .belief-n { font-family: var(--fm); font-size: 0.8rem; color: var(--accent); display: block; margin-bottom: 1rem; }
-    .belief-body strong { display: block; font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; font-family: var(--fd); }
+    /* ABOUT SECTION */
+    #about { background: var(--surface); border-top: 1px solid var(--border); }
+    .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .belief-block { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .belief { background: var(--bg); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px; transition: 0.3s; }
+    .belief:hover { border-color: #444; }
+    .belief-n { font-family: var(--fm); font-size: 0.8rem; color: var(--muted); display: block; margin-bottom: 1rem; }
+    .belief-body strong { display: block; font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; font-weight: 600; }
     .belief-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
-    /* CONTACT */
-    #contact { background: var(--bg); }
-    .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
-    .c-info { position: sticky; top: 150px; }
-    .c-detail-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    /* CONTACT SECTION */
+    #contact { background: var(--bg); border-top: 1px solid var(--border); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+    .c-info { position: sticky; top: 120px; }
+    .c-detail-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
     .c-detail { display: flex; align-items: center; gap: 1.2rem; }
-    .c-detail-icon { width: 45px; height: 45px; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-    .c-detail-val { font-size: 1rem; color: var(--text); font-weight: 500;}
-    .c-detail-lbl { font-size: 0.75rem; color: var(--muted); font-family: var(--fm); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;}
+    .c-detail-icon { width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--muted); }
+    .c-detail-icon svg { width: 18px; height: 18px; }
+    .c-detail-val { font-size: 0.95rem; color: var(--text); font-family: var(--fm);}
+    .c-detail-lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;}
 
-    .c-form { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 16px; display: flex; flex-direction: column; gap: 1.5rem; }
+    /* Modern Form Styling */
+    .c-form { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 12px; display: flex; flex-direction: column; gap: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3);}
     .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .f-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .f-group label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); }
+    .f-group { display: flex; flex-direction: column; gap: 0.6rem; }
+    .f-group label { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; color: var(--muted); letter-spacing: 0.05em;}
     
     .f-group input, .f-group select, .f-group textarea { 
-      background: rgba(255,255,255,0.02); 
+      background: var(--bg); 
       border: 1px solid var(--border); 
-      border-radius: 8px; 
+      border-radius: 6px; 
       color: var(--text); 
       font-family: var(--fb); 
-      font-size: 0.95rem; 
-      padding: 1rem 1.2rem; 
+      font-size: 0.9rem; 
+      padding: 0.8rem 1rem; 
       outline: none; 
-      transition: all 0.3s ease; 
+      transition: all 0.2s ease; 
       -webkit-appearance: none; 
     }
-    .f-group input::placeholder, .f-group textarea::placeholder { color: rgba(139,153,174,0.4); }
+    .f-group input::placeholder, .f-group textarea::placeholder { color: #555; }
     .f-group input:focus, .f-group select:focus, .f-group textarea:focus { 
-      background: rgba(255,255,255,0.04);
       border-color: var(--accent); 
-      box-shadow: 0 0 0 4px rgba(0, 240, 200, 0.1); 
+      box-shadow: 0 0 0 2px var(--accent-glow); 
     }
     .f-group select option { background: var(--bg); }
     .f-group textarea { resize: vertical; min-height: 120px; }
     
-    /* FILE UPLOAD STYLING */
-    input[type="file"] { padding: 0.8rem; border: 1px dashed var(--border); cursor: pointer; color: var(--muted); }
-    input[type="file"]:hover { border-color: rgba(255,255,255,0.2); }
-    input[type="file"]::file-selector-button { background: var(--text); color: var(--bg); border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin-right: 1rem; font-family: var(--fb); font-weight: 600; font-size: 0.8rem; transition: 0.3s; }
-    input[type="file"]::file-selector-button:hover { background: var(--accent); }
+    input[type="file"] { padding: 0.8rem; border: 1px dashed var(--border); cursor: pointer; color: var(--muted); text-align: left; background: var(--bg);}
+    input[type="file"]:hover { border-color: #555; }
+    input[type="file"]::file-selector-button { background: var(--surface-elevated); color: var(--text); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; margin-right: 1rem; font-family: var(--fb); font-size: 0.8rem; transition: 0.2s; }
+    input[type="file"]::file-selector-button:hover { background: #333; }
     .file-hint { font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem; }
-    .file-error { display: none; color: #ff4c6a; font-size: 0.8rem; margin-top: 0.4rem; font-weight: 500; }
     
-    .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; font-size: 1rem; }
+    .f-submit { margin-top: 1rem; width: 100%; justify-content: center; padding: 1rem; font-size: 0.95rem; border-radius: 6px;}
     
-    /* Form Messages */
-    .form-msg { display: none; border-radius: 8px; padding: 1.2rem; font-size: 0.95rem; font-weight: 500; text-align: center; margin-bottom: 1rem;}
-    .form-msg.show { display: block; }
-    .msg-success { background: rgba(0,240,200,0.1); border: 1px solid rgba(0,240,200,0.3); color: var(--accent); }
-    .msg-error { background: rgba(255,76,106,0.1); border: 1px solid rgba(255,76,106,0.3); color: #ff4c6a; }
+    .form-msg { display: none; border-radius: 6px; padding: 1rem; font-size: 0.9rem; font-weight: 500; text-align: center; margin-bottom: 1rem;}
+    .form-msg.show { display: block; animation: fadeUp 0.3s ease forwards;}
+    .msg-success { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10b981; }
 
     /* FOOTER */
-    footer { background: #010204; border-top: 1px solid var(--border); padding: 5rem 5% 2rem; }
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 4rem 5% 2rem; }
     .foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
-    .foot-brand h4 { font-family: var(--fd); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--text); }
-    .foot-brand h4 span { color: var(--accent); }
-    .foot-brand p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; max-width: 350px; }
-    .foot-col h5 { font-size: 0.8rem; font-family: var(--fm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin-bottom: 1.5rem; }
-    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .foot-col ul li a { font-size: 0.95rem; color: var(--muted); text-decoration: none; transition: color 0.3s; }
-    .foot-col ul li a:hover { color: var(--accent); }
+    .foot-brand h4 { font-family: var(--fb); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--text); }
+    .foot-brand p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; max-width: 300px; }
+    .foot-col h5 { font-size: 0.8rem; color: var(--text); margin-bottom: 1.5rem; font-weight: 600; }
+    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .foot-col ul li a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: 0.2s;}
+    .foot-col ul li a:hover { color: var(--text); }
     .foot-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .foot-bottom p { font-size: 0.85rem; color: var(--muted); }
+    .foot-bottom p { font-size: 0.8rem; color: var(--muted); font-family: var(--fm);}
 
-    /* WhatsApp Float */
-    .wa-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 65px; height: 65px; text-decoration: none; box-shadow: 0 10px 30px rgba(37,211,102,0.3); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100; }
-    .wa-float:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 35px rgba(37,211,102,0.4); }
-    .wa-float svg { width: 35px; height: 35px; fill: white; }
+    /* WhatsApp Float - Minimalist */
+    .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; text-decoration: none; box-shadow: 0 8px 24px rgba(37,211,102,0.3); transition: all 0.3s ease; z-index: 100; border: 2px solid transparent;}
+    .wa-float:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(37,211,102,0.4); }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
 
-    /* Animations */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scrollDown { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(25px); opacity: 0; } }
+    /* Custom Keyframe Animations */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.vis { opacity: 1; transform: translateY(0); }
+    
+    /* Staggered reveals for grids */
+    .tier-grid .tier:nth-child(1) { transition-delay: 0s; }
+    .tier-grid .tier:nth-child(2) { transition-delay: 0.1s; }
+    .tier-grid .tier:nth-child(3) { transition-delay: 0.2s; }
+    .srv-grid .srv:nth-child(1) { transition-delay: 0s; }
+    .srv-grid .srv:nth-child(2) { transition-delay: 0.1s; }
+    .srv-grid .srv:nth-child(3) { transition-delay: 0.2s; }
+    .srv-grid .srv:nth-child(4) { transition-delay: 0.3s; }
 
-    /* Mobile */
+    /* Mobile Responsive Details */
     @media (max-width: 992px) {
-      .about-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 4rem; }
+      .about-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
       .c-info { position: relative; top: 0; }
+      .c-form { padding: 2rem; }
     }
     @media (max-width: 768px) {
       nav { padding: 1rem 5%; }
       nav.scrolled { padding: 1rem 5%; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
-      #home { padding: 8rem 5% 4rem; }
+      #home { padding: 8rem 5% 4rem; text-align: left; align-items: flex-start;}
+      .hero-content { align-items: flex-start;}
+      .hero-actions { justify-content: flex-start; }
+      .section-label { justify-content: flex-start; }
+      .sec-header { text-align: left; display: block;}
       section { padding: 5rem 5%; }
       .belief-block, .f-row { grid-template-columns: 1fr; }
-      .hero-stats { flex-wrap: wrap; gap: 2.5rem; }
-      .foot-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .c-form { padding: 2rem 1.5rem; }
-      .wa-float { bottom: 20px; right: 20px; width: 55px; height: 55px; } 
-      .wa-float svg { width: 30px; height: 30px; }
+      .hero-stats { flex-wrap: wrap; gap: 2rem; justify-content: flex-start;}
+      .foot-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .wa-float { bottom: 20px; right: 20px; width: 50px; height: 50px; } 
+      .wa-float svg { width: 24px; height: 24px; }
     }
   </style>
 </head>
@@ -272,10 +303,10 @@
   <a href="#home" class="nav-logo">Semantic<span>.</span>Rework</a>
   <ul class="nav-links">
     <li><a href="#solutions">Solutions</a></li>
-    <li><a href="#expertise">Why Us</a></li>
-    <li><a href="#about">Our Story</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#about">Company</a></li>
   </ul>
-  <a href="#contact" class="btn-primary nav-cta">Discuss Project</a>
+  <a href="#contact" class="btn-primary btn-accent nav-cta">Deploy Project</a>
   
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -285,85 +316,79 @@
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()" aria-label="Close">×</button>
   <a href="#solutions" onclick="toggleMenu()">Solutions</a>
-  <a href="#expertise" onclick="toggleMenu()">Why Us</a>
-  <a href="#about" onclick="toggleMenu()">Our Story</a>
-  <a href="#contact" onclick="toggleMenu()" style="color:var(--accent)">Discuss Project →</a>
+  <a href="#expertise" onclick="toggleMenu()">Expertise</a>
+  <a href="#about" onclick="toggleMenu()">Company</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--text)">Deploy Project</a>
 </div>
 
 <main>
 <section id="home">
-  <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span></span> Driving IoT Digitization · Based in Kolkata</div>
+    <div class="hero-badge"><span></span> Operational · Serving Global B2B</div>
     <h1 class="hero-title">
-      Bridging the Gap Between<br>
-      <span class="text-gradient">Hardware</span><br>
-      and the Web.
+      Hardware Data.<br>
+      <span class="text-gradient">Web Precision.</span>
     </h1>
     <p class="hero-sub">
-      We transform complex industrial data into <strong>accessible, real-time web dashboards</strong>. From edge processing to cloud integration, we build web solutions engineered for automation.
+      We engineer high-performance web dashboards and cloud integrations tailored for industrial automation, edge devices, and heavy machinery.
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary" style="padding: 1rem 2rem; font-size: 1rem;">
-        Start Your Project
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      <a href="#contact" class="btn-primary btn-accent" style="padding: 0.8rem 1.5rem; font-size: 0.95rem;">
+        Start Deployment
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="11" y2="6"></line><polyline points="5 6 11 6 11 12"></polyline></svg>
+      </a>
+      <a href="#solutions" class="btn-primary" style="background: var(--surface); border: 1px solid var(--border);">
+        View Architecture
       </a>
     </div>
     
     <div class="hero-stats">
-      <div><div class="stat-num">IoT</div><div class="stat-label">Device Integration</div></div>
-      <div><div class="stat-num">Real-Time</div><div class="stat-label">Data Logging</div></div>
-      <div><div class="stat-num">Custom</div><div class="stat-label">Web HMIs</div></div>
+      <div><div class="stat-num">MQTT/REST</div><div class="stat-label">Protocols</div></div>
+      <div><div class="stat-num">&lt;50ms</div><div class="stat-label">Data Latency</div></div>
+      <div><div class="stat-num">NABL</div><div class="stat-label">Ready Logging</div></div>
     </div>
-  </div>
-
-  <div class="scroll-indicator">
-    Scroll <div class="scroll-line"></div>
   </div>
 </section>
 
 <section id="solutions">
   <div class="sec-header reveal">
     <p class="section-label">Core Solutions</p>
-    <h2 class="section-title">Web Interfaces for<br><span class="text-gradient">Industrial Automation</span></h2>
-    <p class="section-desc">We move beyond generic brochure websites. We build functional, data-driven platforms tailored for manufacturing, supply chains, and engineering operations.</p>
+    <h2 class="section-title">Engineered Web Interfaces</h2>
+    <p class="section-desc">Functional, data-driven platforms built strictly for manufacturing, supply chains, and industrial engineering operations.</p>
   </div>
   
-  <div class="tier-grid reveal">
-    <div class="tier">
-      <div class="tier-badge">Data Visualization</div>
-      <div class="tier-name">Industrial Web Dashboards</div>
-      <p class="tier-desc">Custom, data-driven web interfaces designed for real-time sensor tracking and remote PLC monitoring.</p>
+  <div class="tier-grid">
+    <div class="tier reveal">
+      <div class="tier-badge">Visual Layer</div>
+      <div class="tier-name">Industrial Dashboards</div>
+      <p class="tier-desc">Custom web interfaces engineered for real-time sensor tracking and remote PLC array monitoring.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Modbus (TCP/RTU) Integration</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Live Sensor Data Streams</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Historical Data & Analytics</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Responsive Remote UI</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Modbus (TCP/RTU) parsing</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Live continuous data streams</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Historical analytics export</strong></span></li>
       </ul>
     </div>
     
-    <div class="tier featured">
-      <div class="tier-badge">End-to-End</div>
-      <div class="tier-name">Hardware-to-Cloud Integration</div>
-      <p class="tier-desc">Securely sync and log data from your edge devices and microcontrollers directly to your cloud architecture.</p>
+    <div class="tier featured reveal">
+      <div class="tier-badge">Data Pipeline</div>
+      <div class="tier-name">Hardware-to-Cloud Sync</div>
+      <p class="tier-desc">Secure edge-to-cloud architectures to log data from microcontrollers directly to your web servers.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Raspberry Pi & ESP32 Connect</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Secure MQTT / REST API</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Cloud Sync & Data Logging</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>NABL Compliance Ready</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Raspberry Pi / ESP32 nodes</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Secure MQTT broker setup</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Loss-less cloud data logging</strong></span></li>
       </ul>
     </div>
     
-    <div class="tier">
-      <div class="tier-badge">Control Systems</div>
-      <div class="tier-name">Custom HMI & Panels</div>
-      <p class="tier-desc">User-friendly web-based HMIs (Human-Machine Interfaces) to manage alarms and control industrial machinery.</p>
+    <div class="tier reveal">
+      <div class="tier-badge">Control Layer</div>
+      <div class="tier-name">Web-Based HMIs</div>
+      <p class="tier-desc">Scalable Human-Machine Interfaces accessed via the browser to manage alarms and control machinery.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Machine Control UI</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Automation Logic Translation</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Alarm & Alert Management</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Real-time Status Visuals</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Bi-directional machine control</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Automated alert triggers</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> <span><strong>Role-based access security</strong></span></li>
       </ul>
     </div>
   </div>
@@ -371,31 +396,39 @@
 
 <section id="expertise">
   <div class="sec-header reveal">
-    <p class="section-label">Why Us</p>
-    <h2 class="section-title">Deep-Tech <span class="text-gradient">Expertise</span></h2>
-    <p class="section-desc">We don't just write code. We understand the physics, the hardware, and the automation logic behind your operations.</p>
+    <p class="section-label">Infrastructure</p>
+    <h2 class="section-title">Deep-Tech Expertise</h2>
+    <p class="section-desc">We bridge the gap between physical electrical components and modern software architecture.</p>
   </div>
   
-  <div class="srv-grid reveal">
-    <div class="srv">
-      <div class="srv-icon">🧠</div>
-      <h3 class="srv-title">Deep Domain Knowledge</h3>
-      <p class="srv-desc">Our team brings background in Electrical Engineering. We understand PLCs, sensors, and the specific needs of industrial environments.</p>
+  <div class="srv-grid">
+    <div class="srv reveal">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+      </div>
+      <h3 class="srv-title">Domain Knowledge</h3>
+      <p class="srv-desc">Our core team is rooted in Electrical & Electronics Engineering. We natively understand PLCs and sensor logic.</p>
     </div>
-    <div class="srv">
-      <div class="srv-icon">⚙️</div>
-      <h3 class="srv-title">End-to-End Solutions</h3>
-      <p class="srv-desc">From designing the physical wire harness to developing the cloud dashboard, we manage the entire data pipeline securely.</p>
+    <div class="srv reveal">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>
+      </div>
+      <h3 class="srv-title">Pipeline Architecture</h3>
+      <p class="srv-desc">From understanding physical wire harnesses to deploying the final cloud cluster, we secure the whole data pipeline.</p>
     </div>
-    <div class="srv">
-      <div class="srv-icon">🌍</div>
+    <div class="srv reveal">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
       <h3 class="srv-title">Global Reliability</h3>
-      <p class="srv-desc">We adhere to international B2B standards, ensuring project delivery on time with seamless, professional communication.</p>
+      <p class="srv-desc">Engineered to international B2B standards, ensuring deployment on time with seamless communication.</p>
     </div>
-    <div class="srv">
-      <div class="srv-icon">🤖</div>
-      <h3 class="srv-title">AI & Automation</h3>
-      <p class="srv-desc">We embed intelligence into your web products, implementing predictive analytics and automated reporting for your machinery.</p>
+    <div class="srv reveal">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/><rect x="9" y="11" width="2" height="2" rx="1"/><rect x="13" y="11" width="2" height="2" rx="1"/></svg>
+      </div>
+      <h3 class="srv-title">Automation Logic</h3>
+      <p class="srv-desc">We embed intelligence into your dashboards, implementing predictive analytics and automated systems reporting.</p>
     </div>
   </div>
 </section>
@@ -403,13 +436,13 @@
 <section id="about">
   <div class="about-wrap">
     <div class="reveal">
-      <p class="section-label">Our Story</p>
-      <h2 class="section-title">We speak both<br><span class="text-gradient">Code & Hardware.</span></h2>
+      <p class="section-label">Our Protocol</p>
+      <h2 class="section-title">Fluent in both<br>Code & Hardware.</h2>
       <p class="section-desc" style="margin-bottom:1.5rem;">
-        Semantic Rework is a specialized tech agency that goes beyond standard web development to interface directly with industrial automation and IoT.
+        Semantic Rework is a specialized agency bridging the gap between traditional web development and industrial IoT automation.
       </p>
       <p class="section-desc">
-        Our team has deep roots in electrical systems and software architecture. This unique overlap allows us to perfectly translate the language of sensors, edge devices, and heavy machinery into elegant, user-friendly web platforms for a global clientele.
+        Based in Kolkata, our unique overlap of electrical systems knowledge and modern software frameworks allows us to translate the raw data of edge devices into elegant, highly available web platforms for a global clientele.
       </p>
     </div>
     
@@ -417,29 +450,29 @@
       <div class="belief">
         <span class="belief-n">01</span>
         <div class="belief-body">
-          <strong>Data Accuracy</strong>
-          <p>In industrial settings, data integrity is critical. We ensure secure, loss-less data transmission.</p>
+          <strong>Data Integrity</strong>
+          <p>Industrial data is critical. We ensure secure, zero-loss transmission.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">02</span>
         <div class="belief-body">
-          <strong>Speed & Reliability</strong>
-          <p>Real-time monitoring requires systems architected for absolute speed and zero downtime.</p>
+          <strong>Low Latency</strong>
+          <p>Real-time monitoring requires systems architected for absolute speed.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">03</span>
         <div class="belief-body">
-          <strong>Intuitive UI/UX</strong>
-          <p>Complex machine data simplified into clean dashboards that your team can actually understand.</p>
+          <strong>Clean Interfaces</strong>
+          <p>We simplify complex machine logic into usable operator dashboards.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">04</span>
         <div class="belief-body">
-          <strong>Built to Scale</strong>
-          <p>Whether you add one sensor or a thousand machines, our cloud architectures grow with you.</p>
+          <strong>Scalability</strong>
+          <p>Our cloud architectures scale seamlessly from one node to thousands.</p>
         </div>
       </div>
     </div>
@@ -449,22 +482,26 @@
 <section id="contact">
   <div class="contact-wrap">
     <div class="c-info reveal">
-      <p class="section-label">Let's Connect</p>
-      <h2 class="section-title">Digitize your<br><span class="text-gradient">operations.</span></h2>
+      <p class="section-label">Initialize</p>
+      <h2 class="section-title">Digitize your<br>infrastructure.</h2>
       <p class="section-desc" style="margin-bottom: 2rem;">
-        Tell us about your hardware infrastructure and what you need your web platform to achieve. Our specialized team is ready to build it right.
+        Provide your hardware specifications and platform requirements. Our team will review the technical scope and initiate contact.
       </p>
       
       <div class="c-detail-list">
         <div class="c-detail">
-          <div class="c-detail-icon">📧</div>
+          <div class="c-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
           <div>
-            <div class="c-detail-lbl">Email Us</div>
+            <div class="c-detail-lbl">Email Protocol</div>
             <div class="c-detail-val">kushik12debnath@gmail.com</div>
           </div>
         </div>
         <div class="c-detail">
-          <div class="c-detail-icon">📍</div>
+          <div class="c-detail-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
           <div>
             <div class="c-detail-lbl">Global HQ</div>
             <div class="c-detail-val">Kolkata, India</div>
@@ -479,64 +516,63 @@
       <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data" target="hidden_iframe" onsubmit="handleFormSubmit()">
         
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New B2B Tech Project Query — Semantic Rework">
+        <input type="hidden" name="_subject" value="New Technical Brief — Semantic Rework">
         <input type="hidden" name="_template" value="table">
         
         <div id="formMsg" class="form-msg"></div>
 
         <div class="f-row">
           <div class="f-group">
-            <label for="fname">First Name *</label>
+            <label for="fname">First Name</label>
             <input id="fname" name="firstName" type="text" placeholder="John" required />
           </div>
           <div class="f-group">
-            <label for="lname">Last Name *</label>
+            <label for="lname">Last Name</label>
             <input id="lname" name="lastName" type="text" placeholder="Doe" required />
           </div>
         </div>
         
         <div class="f-row">
           <div class="f-group">
-            <label for="email">Work Email *</label>
+            <label for="email">Work Email</label>
             <input id="email" name="email" type="email" placeholder="john@company.com" required />
           </div>
           <div class="f-group">
-            <label for="phone">Phone Number *</label>
+            <label for="phone">Contact Number</label>
             <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" required />
           </div>
         </div>
         
         <div class="f-group">
-          <label for="service">Service Needed *</label>
+          <label for="service">Architecture Type</label>
           <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service...</option>
+            <option value="" disabled selected>Select deployment requirement...</option>
             <option>Industrial Web Dashboard</option>
             <option>Hardware-to-Cloud Integration</option>
             <option>Custom Web-based HMI</option>
-            <option>General Tech Consulting</option>
+            <option>System Consultation</option>
           </select>
         </div>
 
         <div class="f-group">
-          <label for="msg">Project Details *</label>
-          <textarea id="msg" name="message" placeholder="Tell us about your hardware, PLCs, or the specific data you want to visualize on the web..." required></textarea>
+          <label for="msg">System Specifications</label>
+          <textarea id="msg" name="message" placeholder="Detail your edge devices, PLCs, communication protocols, and expected data volume..." required></textarea>
         </div>
 
         <div class="f-group">
-          <label for="docUpload">Attach Architecture/Brief (Optional)</label>
-          <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx" onchange="validateFileSize(this)" />
-          <span class="file-hint">PDF, Word, Excel. Max size: 10MB. Document will appear as a link at the bottom of your email.</span>
-          <span id="fileError" class="file-error">File size exceeds 10MB. Please choose a smaller file.</span>
+          <label for="docUpload">Attach Schematic / Brief (Optional)</label>
+          <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" onchange="validateFileSize(this)" />
+          <span class="file-hint">PDF, Word, Excel, ZIP. Max size: 10MB.</span>
         </div>
         
-        <button type="submit" class="btn-primary f-submit" id="submitBtn">Send Technical Brief</button>
+        <button type="submit" class="btn-primary btn-accent f-submit" id="submitBtn">Transmit Technical Brief</button>
       </form>
     </div>
   </div>
 </section>
 </main>
 
-<a href="https://wa.me/918250278119?text=Hi%20Semantic%20Rework,%20I'm%20interested%20in%20discussing%20an%20industrial%20web%20integration%20project." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+<a href="https://wa.me/918250278119?text=Hello%20Semantic%20Rework,%20I%20need%20to%20discuss%20an%20industrial%20web%20deployment." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -547,24 +583,24 @@
       <p>Specialized tech agency bridging the gap between industrial hardware and the web.</p>
     </div>
     <div class="foot-col">
-      <h5>Services</h5>
+      <h5>Architectures</h5>
       <ul>
-        <li><a href="#solutions">Industrial Dashboards</a></li>
-        <li><a href="#solutions">Cloud Integration</a></li>
-        <li><a href="#solutions">Custom HMIs</a></li>
+        <li><a href="#solutions">Dashboards</a></li>
+        <li><a href="#solutions">Cloud Logging</a></li>
+        <li><a href="#solutions">Web HMIs</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h5>Company</h5>
+      <h5>Agency</h5>
       <ul>
-        <li><a href="#about">Our Story</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#about">Protocol</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
-    <p>© 2026 Semantic Rework. All rights reserved.</p>
-    <p>Kolkata, India</p>
+    <p>© 2026 Semantic Rework. All systems nominal.</p>
+    <p>HQ: Kolkata, India</p>
   </div>
 </footer>
 
@@ -573,7 +609,7 @@
   window.addEventListener('load', () => { window.scrollTo(0, 0); });
 
   const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20));
   function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
   
   (() => {
@@ -585,22 +621,19 @@
 
   function validateFileSize(input) {
     const maxSize = 10 * 1024 * 1024; // 10MB
-    const errorSpan = document.getElementById('fileError');
     const submitBtn = document.getElementById('submitBtn');
 
     if (input.files && input.files[0]) {
       if (input.files[0].size > maxSize) {
-        errorSpan.style.display = 'block';
+        alert("Payload exceeds 10MB limit. Please compress your schematic.");
         submitBtn.disabled = true; 
         input.value = ''; 
       } else {
-        errorSpan.style.display = 'none';
         submitBtn.disabled = false;
       }
     }
   }
 
-  // --- THE NEW INVISIBLE IFRAME SUBMISSION LOGIC ---
   let submitted = false;
 
   function handleFormSubmit() {
@@ -609,7 +642,7 @@
     const msgBox = document.getElementById('formMsg');
     
     btn.disabled = true; 
-    btn.textContent = 'Sending...';
+    btn.textContent = 'Transmitting...';
     msgBox.className = 'form-msg'; 
     msgBox.innerHTML = '';
   }
@@ -621,13 +654,13 @@
       const msgBox = document.getElementById('formMsg');
       
       form.reset(); 
-      msgBox.innerHTML = '✓ Message and document sent successfully! We will contact you soon.';
+      msgBox.innerHTML = '✓ Brief transmitted successfully. Awaiting response.';
       msgBox.classList.add('msg-success', 'show');
-      btn.textContent = 'Sent ✓';
+      btn.textContent = 'Transmitted ✓';
       
       setTimeout(() => { 
         msgBox.classList.remove('show'); 
-        btn.textContent = 'Send Technical Brief'; 
+        btn.textContent = 'Transmit Technical Brief'; 
         btn.disabled = false; 
       }, 5000);
       
