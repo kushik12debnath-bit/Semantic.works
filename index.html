@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <meta name="description" content="Semantic Reworks is a premium web development studio based in Kolkata. We build high-performance websites, SaaS applications, and e-commerce platforms." />
-  <meta name="keywords" content="web development Kolkata, web design agency, SaaS development, business websites" />
-  <meta name="author" content="Semantic Reworks" />
+  <meta name="description" content="Semantic Rework is a specialized tech agency building industrial web dashboards, custom HMIs, and IoT hardware-to-cloud integrations." />
+  <meta name="keywords" content="IoT digitization, industrial web dashboards, hardware to cloud, custom HMI, automation web interface, Semantic Rework" />
+  <meta name="author" content="Semantic Rework" />
   
-  <title>Semantic Reworks — Premium Web Development</title>
+  <title>Semantic Rework — Driving IoT Digitization</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -132,8 +132,8 @@
     .section-desc { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
     .sec-header { margin-bottom: 4rem; }
 
-    /* TIERS */
-    #tiers { background: var(--surface); position: relative; }
+    /* TIERS -> REPURPOSED AS CORE SOLUTIONS */
+    #solutions { background: var(--surface); position: relative; }
     .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
     .tier { background: var(--bg); border: 1px solid var(--border); padding: 3rem 2.5rem; border-radius: 16px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; }
     .tier:hover { transform: translateY(-8px); border-color: var(--border-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
@@ -141,15 +141,15 @@
     .tier.featured:hover { border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,240,200,0.1); }
     .tier-badge { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); background: var(--surface); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 50px; display: inline-block; margin-bottom: 1.5rem; align-self: flex-start; }
     .tier.featured .tier-badge { background: rgba(0,240,200,0.1); color: var(--accent); border-color: rgba(0,240,200,0.2); }
-    .tier-name { font-family: var(--fd); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: var(--text); }
+    .tier-name { font-family: var(--fd); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: var(--text); line-height: 1.2;}
     .tier-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
     .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; flex-grow: 1; }
     .tier-list li { font-size: 0.9rem; color: var(--muted); display: flex; gap: 0.8rem; align-items: flex-start; }
     .tier-list li svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); margin-top: 3px; }
     .tier-list li strong { color: var(--text); font-weight: 500; }
     
-    /* SERVICES */
-    #services { background: var(--bg); }
+    /* SERVICES -> REPURPOSED AS EXPERTISE */
+    #expertise { background: var(--bg); }
     .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
     .srv { background: var(--surface); border: 1px solid var(--border); padding: 3rem; border-radius: 16px; transition: all 0.4s ease; }
     .srv:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-5px); }
@@ -269,13 +269,13 @@
 <body>
 
 <nav id="navbar">
-  <a href="#home" class="nav-logo">Semantic<span>.</span>Reworks</a>
+  <a href="#home" class="nav-logo">Semantic<span>.</span>Rework</a>
   <ul class="nav-links">
-    <li><a href="#tiers">Web Packages</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#expertise">Why Us</a></li>
     <li><a href="#about">Our Story</a></li>
   </ul>
-  <a href="#contact" class="btn-primary nav-cta">Start Project</a>
+  <a href="#contact" class="btn-primary nav-cta">Discuss Project</a>
   
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -284,10 +284,10 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()" aria-label="Close">×</button>
-  <a href="#tiers" onclick="toggleMenu()">Web Packages</a>
-  <a href="#services" onclick="toggleMenu()">Services</a>
-  <a href="#about" onclick="toggleMenu()">Company</a>
-  <a href="#contact" onclick="toggleMenu()" style="color:var(--accent)">Start Project →</a>
+  <a href="#solutions" onclick="toggleMenu()">Solutions</a>
+  <a href="#expertise" onclick="toggleMenu()">Why Us</a>
+  <a href="#about" onclick="toggleMenu()">Our Story</a>
+  <a href="#contact" onclick="toggleMenu()" style="color:var(--accent)">Discuss Project →</a>
 </div>
 
 <main>
@@ -295,16 +295,14 @@
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span></span> Based in Kolkata · Serving Globally</div>
+    <div class="hero-badge"><span></span> Driving IoT Digitization · Based in Kolkata</div>
     <h1 class="hero-title">
-      Websites That<br>
-      <span class="text-gradient">Work Hard</span><br>
-      for Your Business.
+      Bridging the Gap Between<br>
+      <span class="text-gradient">Hardware</span><br>
+      and the Web.
     </h1>
     <p class="hero-sub">
-      From a <strong>local shop's first online presence</strong> to a
-      <strong>large enterprise web platform</strong> — we craft high-performance,
-      conversion-focused websites paired with digital growth strategies.
+      We transform complex industrial data into <strong>accessible, real-time web dashboards</strong>. From edge processing to cloud integration, we build web solutions engineered for automation.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary" style="padding: 1rem 2rem; font-size: 1rem;">
@@ -314,9 +312,9 @@
     </div>
     
     <div class="hero-stats">
-      <div><div class="stat-num">99+</div><div class="stat-label">Websites Delivered</div></div>
-      <div><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
-      <div><div class="stat-num">24/7</div><div class="stat-label">Support Available</div></div>
+      <div><div class="stat-num">IoT</div><div class="stat-label">Device Integration</div></div>
+      <div><div class="stat-num">Real-Time</div><div class="stat-label">Data Logging</div></div>
+      <div><div class="stat-num">Custom</div><div class="stat-label">Web HMIs</div></div>
     </div>
   </div>
 
@@ -325,79 +323,79 @@
   </div>
 </section>
 
-<section id="tiers">
+<section id="solutions">
   <div class="sec-header reveal">
-    <p class="section-label">Packages</p>
-    <h2 class="section-title">Web Solutions for<br><span class="text-gradient">Every Business Size</span></h2>
-    <p class="section-desc">Whether you're just starting out or scaling to enterprise — we have a web solution tailored to your goals, audience, and budget.</p>
+    <p class="section-label">Core Solutions</p>
+    <h2 class="section-title">Web Interfaces for<br><span class="text-gradient">Industrial Automation</span></h2>
+    <p class="section-desc">We move beyond generic brochure websites. We build functional, data-driven platforms tailored for manufacturing, supply chains, and engineering operations.</p>
   </div>
   
   <div class="tier-grid reveal">
     <div class="tier">
-      <div class="tier-badge">Starter</div>
-      <div class="tier-name">Small Business</div>
-      <p class="tier-desc">Perfect for local businesses, freelancers, and startups needing a clean, professional online presence.</p>
+      <div class="tier-badge">Data Visualization</div>
+      <div class="tier-name">Industrial Web Dashboards</div>
+      <p class="tier-desc">Custom, data-driven web interfaces designed for real-time sensor tracking and remote PLC monitoring.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>5-page Website</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Mobile-first design</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>WhatsApp integration</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Basic SEO & Hosting</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Modbus (TCP/RTU) Integration</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Live Sensor Data Streams</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Historical Data & Analytics</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Responsive Remote UI</strong></span></li>
       </ul>
     </div>
     
     <div class="tier featured">
-      <div class="tier-badge">Most Popular</div>
-      <div class="tier-name">Mid-Range Business</div>
-      <p class="tier-desc">Ideal for growing businesses that need dynamic content, lead funnels, and integrations.</p>
+      <div class="tier-badge">End-to-End</div>
+      <div class="tier-name">Hardware-to-Cloud Integration</div>
+      <p class="tier-desc">Securely sync and log data from your edge devices and microcontrollers directly to your cloud architecture.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Multi-page CMS Website</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Custom UI/UX Identity</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Lead capture CRM</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Advanced On-page SEO</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Raspberry Pi & ESP32 Connect</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Secure MQTT / REST API</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Cloud Sync & Data Logging</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>NABL Compliance Ready</strong></span></li>
       </ul>
     </div>
     
     <div class="tier">
-      <div class="tier-badge">Enterprise</div>
-      <div class="tier-name">High-Range</div>
-      <p class="tier-desc">For established companies needing custom web applications, automation, and robust digital ecosystems.</p>
+      <div class="tier-badge">Control Systems</div>
+      <div class="tier-name">Custom HMI & Panels</div>
+      <p class="tier-desc">User-friendly web-based HMIs (Human-Machine Interfaces) to manage alarms and control industrial machinery.</p>
       <ul class="tier-list">
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Custom Web App / SaaS</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>E-commerce Payment Gateway</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>AI & API Integrations</strong></span></li>
-        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Dedicated Maintenance</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Machine Control UI</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Automation Logic Translation</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Alarm & Alert Management</strong></span></li>
+        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Real-time Status Visuals</strong></span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<section id="services">
+<section id="expertise">
   <div class="sec-header reveal">
-    <p class="section-label">Ecosystem</p>
-    <h2 class="section-title">Full-Stack <span class="text-gradient">Digital Services</span></h2>
-    <p class="section-desc">A great website is just the start. We layer in hardware, AI, and growth services to make your entire digital operation unstoppable.</p>
+    <p class="section-label">Why Us</p>
+    <h2 class="section-title">Deep-Tech <span class="text-gradient">Expertise</span></h2>
+    <p class="section-desc">We don't just write code. We understand the physics, the hardware, and the automation logic behind your operations.</p>
   </div>
   
   <div class="srv-grid reveal">
     <div class="srv">
-      <div class="srv-icon">🖥</div>
-      <h3 class="srv-title">Web & Software Dev</h3>
-      <p class="srv-desc">Custom websites and digital products built with modern stacks (React, Flutter, Python), architected for absolute speed and scalability.</p>
+      <div class="srv-icon">🧠</div>
+      <h3 class="srv-title">Deep Domain Knowledge</h3>
+      <p class="srv-desc">Our team brings background in Electrical Engineering. We understand PLCs, sensors, and the specific needs of industrial environments.</p>
     </div>
     <div class="srv">
       <div class="srv-icon">⚙️</div>
-      <h3 class="srv-title">Hardware & IoT</h3>
-      <p class="srv-desc">For businesses that need physical hardware to talk to their backend — we bridge the gap with custom IoT and embedded systems.</p>
+      <h3 class="srv-title">End-to-End Solutions</h3>
+      <p class="srv-desc">From designing the physical wire harness to developing the cloud dashboard, we manage the entire data pipeline securely.</p>
+    </div>
+    <div class="srv">
+      <div class="srv-icon">🌍</div>
+      <h3 class="srv-title">Global Reliability</h3>
+      <p class="srv-desc">We adhere to international B2B standards, ensuring project delivery on time with seamless, professional communication.</p>
     </div>
     <div class="srv">
       <div class="srv-icon">🤖</div>
-      <h3 class="srv-title">Applied AI/ML</h3>
-      <p class="srv-desc">We embed intelligence into your web products — from lead-qualifying chatbots to predictive analytics working behind the scenes.</p>
-    </div>
-    <div class="srv">
-      <div class="srv-icon">📈</div>
-      <h3 class="srv-title">Growth Marketing</h3>
-      <p class="srv-desc">Your website needs visitors that convert. We run data-driven, automated marketing funnels that turn clicks into loyal customers.</p>
+      <h3 class="srv-title">AI & Automation</h3>
+      <p class="srv-desc">We embed intelligence into your web products, implementing predictive analytics and automated reporting for your machinery.</p>
     </div>
   </div>
 </section>
@@ -406,12 +404,12 @@
   <div class="about-wrap">
     <div class="reveal">
       <p class="section-label">Our Story</p>
-      <h2 class="section-title">Businesses deserve<br><span class="text-gradient">better websites.</span></h2>
+      <h2 class="section-title">We speak both<br><span class="text-gradient">Code & Hardware.</span></h2>
       <p class="section-desc" style="margin-bottom:1.5rem;">
-        We started Semantic Reworks because too many growing businesses were settling for templated, slow, forgettable websites that did nothing for their growth.
+        Semantic Rework is a specialized tech agency that goes beyond standard web development to interface directly with industrial automation and IoT.
       </p>
       <p class="section-desc">
-        Based in Kolkata, we work with businesses of every size. Every client gets the same commitment: a website engineered to perform, convert, and scale.
+        Our team has deep roots in electrical systems and software architecture. This unique overlap allows us to perfectly translate the language of sensors, edge devices, and heavy machinery into elegant, user-friendly web platforms for a global clientele.
       </p>
     </div>
     
@@ -419,29 +417,29 @@
       <div class="belief">
         <span class="belief-n">01</span>
         <div class="belief-body">
-          <strong>Asset, not a bill.</strong>
-          <p>Every rupee spent on your website should come back multiplied.</p>
+          <strong>Data Accuracy</strong>
+          <p>In industrial settings, data integrity is critical. We ensure secure, loss-less data transmission.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">02</span>
         <div class="belief-body">
-          <strong>Speed is a feature.</strong>
-          <p>A slow website loses customers. We obsess over load times.</p>
+          <strong>Speed & Reliability</strong>
+          <p>Real-time monitoring requires systems architected for absolute speed and zero downtime.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">03</span>
         <div class="belief-body">
-          <strong>Design must convert.</strong>
-          <p>Beautiful design means nothing if visitors leave without acting.</p>
+          <strong>Intuitive UI/UX</strong>
+          <p>Complex machine data simplified into clean dashboards that your team can actually understand.</p>
         </div>
       </div>
       <div class="belief">
         <span class="belief-n">04</span>
         <div class="belief-body">
-          <strong>Built to scale.</strong>
-          <p>We architect your platform to grow, so you never start over.</p>
+          <strong>Built to Scale</strong>
+          <p>Whether you add one sensor or a thousand machines, our cloud architectures grow with you.</p>
         </div>
       </div>
     </div>
@@ -452,9 +450,9 @@
   <div class="contact-wrap">
     <div class="c-info reveal">
       <p class="section-label">Let's Connect</p>
-      <h2 class="section-title">Start your<br><span class="text-gradient">project with us.</span></h2>
+      <h2 class="section-title">Digitize your<br><span class="text-gradient">operations.</span></h2>
       <p class="section-desc" style="margin-bottom: 2rem;">
-        Tell us about your business and what you need online. Our team in Kolkata is ready to build it right.
+        Tell us about your hardware infrastructure and what you need your web platform to achieve. Our specialized team is ready to build it right.
       </p>
       
       <div class="c-detail-list">
@@ -468,7 +466,7 @@
         <div class="c-detail">
           <div class="c-detail-icon">📍</div>
           <div>
-            <div class="c-detail-lbl">Location</div>
+            <div class="c-detail-lbl">Global HQ</div>
             <div class="c-detail-val">Kolkata, India</div>
           </div>
         </div>
@@ -476,14 +474,12 @@
     </div>
 
     <div class="reveal">
-      <!-- THE HIDDEN IFRAME HACK: This stops the page from redirecting while keeping standard file uploads working -->
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleIframeLoad(); }"></iframe>
 
-      <!-- FormSubmit Integration (NO /AJAX/ in URL!) -->
       <form id="contactForm" class="c-form" action="https://formsubmit.co/kushik12debnath@gmail.com" method="POST" enctype="multipart/form-data" target="hidden_iframe" onsubmit="handleFormSubmit()">
         
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="New Web Project Query — Semantic Reworks">
+        <input type="hidden" name="_subject" value="New B2B Tech Project Query — Semantic Rework">
         <input type="hidden" name="_template" value="table">
         
         <div id="formMsg" class="form-msg"></div>
@@ -506,7 +502,7 @@
           </div>
           <div class="f-group">
             <label for="phone">Phone Number *</label>
-            <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+            <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" required />
           </div>
         </div>
         
@@ -514,48 +510,48 @@
           <label for="service">Service Needed *</label>
           <select id="service" name="service" required>
             <option value="" disabled selected>Select a service...</option>
-            <option>Business Website (Small / Starter)</option>
-            <option>Growth Website with CMS &amp; SEO</option>
-            <option>Custom Web Application / SaaS</option>
-            <option>AI / Chatbot Integration</option>
+            <option>Industrial Web Dashboard</option>
+            <option>Hardware-to-Cloud Integration</option>
+            <option>Custom Web-based HMI</option>
+            <option>General Tech Consulting</option>
           </select>
         </div>
 
         <div class="f-group">
           <label for="msg">Project Details *</label>
-          <textarea id="msg" name="message" placeholder="What does your business do? What do you need this platform to achieve?" required></textarea>
+          <textarea id="msg" name="message" placeholder="Tell us about your hardware, PLCs, or the specific data you want to visualize on the web..." required></textarea>
         </div>
 
         <div class="f-group">
-          <label for="docUpload">Attach Brief (Optional)</label>
+          <label for="docUpload">Attach Architecture/Brief (Optional)</label>
           <input type="file" id="docUpload" name="attachment" accept=".pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx" onchange="validateFileSize(this)" />
-          <span class="file-hint">PDF, Word, Excel, PPT. Max size: 10MB. Document will appear as a link at the bottom of your email.</span>
+          <span class="file-hint">PDF, Word, Excel. Max size: 10MB. Document will appear as a link at the bottom of your email.</span>
           <span id="fileError" class="file-error">File size exceeds 10MB. Please choose a smaller file.</span>
         </div>
         
-        <button type="submit" class="btn-primary f-submit" id="submitBtn">Send Message</button>
+        <button type="submit" class="btn-primary f-submit" id="submitBtn">Send Technical Brief</button>
       </form>
     </div>
   </div>
 </section>
 </main>
 
-<a href="https://wa.me/918250278119?text=Hi%20Semantic%20Reworks,%20I'm%20interested%20in%20discussing%20a%20project." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+<a href="https://wa.me/918250278119?text=Hi%20Semantic%20Rework,%20I'm%20interested%20in%20discussing%20an%20industrial%20web%20integration%20project." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
-      <h4>Semantic<span>.</span>Reworks</h4>
-      <p>Premium web development studio building digital presence that performs.</p>
+      <h4>Semantic<span>.</span>Rework</h4>
+      <p>Specialized tech agency bridging the gap between industrial hardware and the web.</p>
     </div>
     <div class="foot-col">
       <h5>Services</h5>
       <ul>
-        <li><a href="#tiers">Web Packages</a></li>
-        <li><a href="#services">Software Dev</a></li>
-        <li><a href="#services">AI & Marketing</a></li>
+        <li><a href="#solutions">Industrial Dashboards</a></li>
+        <li><a href="#solutions">Cloud Integration</a></li>
+        <li><a href="#solutions">Custom HMIs</a></li>
       </ul>
     </div>
     <div class="foot-col">
@@ -567,7 +563,7 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <p>© 2026 Semantic Reworks. All rights reserved.</p>
+    <p>© 2026 Semantic Rework. All rights reserved.</p>
     <p>Kolkata, India</p>
   </div>
 </footer>
@@ -631,7 +627,7 @@
       
       setTimeout(() => { 
         msgBox.classList.remove('show'); 
-        btn.textContent = 'Send Message'; 
+        btn.textContent = 'Send Technical Brief'; 
         btn.disabled = false; 
       }, 5000);
       
