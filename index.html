@@ -81,7 +81,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0.8rem 5%;
+      padding: 0.5rem 5%;
       border-bottom: 1px solid transparent;
       transition: all 0.6s var(--cb);
       background: rgba(3, 5, 9, 0.05);
@@ -91,24 +91,25 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 0.5rem 5%;
+      padding: 0.3rem 5%;
     }
     
-    /* Header Logo & Text CSS */
-    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 0.8rem; }
+    /* Header Logo & Text CSS - ULTRA LARGE */
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 1rem; }
     .nav-logo img { 
-        height: 75px; 
-        width: 75px;
+        height: 160px; /* Massively increased size */
+        width: 160px;
         object-fit: contain; 
         border-radius: 50%; 
-        box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+        box-shadow: 0 6px 20px rgba(0,0,0,0.8); 
         transition: all 0.6s var(--cb);
     }
+    /* Shrink logo dynamically on scroll so it doesn't break the UX */
     nav.scrolled .nav-logo img {
-        height: 55px;
-        width: 55px;
+        height: 80px;
+        width: 80px;
     }
-    .nav-logo div { font-family: var(--fd); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.03em; color: var(--text); }
+    .nav-logo div { font-family: var(--fd); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; color: var(--text); }
     .nav-logo div span { color: var(--accent); }
     
     .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
@@ -141,7 +142,7 @@
     .mobile-close { position: absolute; top: 1.5rem; right: 5%; font-size: 2.5rem; color: var(--muted); cursor: pointer; background: none; border: none; }
 
     /* HERO */
-    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 15rem 5% 6rem; position: relative; overflow: hidden; background: transparent; }
+    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 18rem 5% 6rem; position: relative; overflow: hidden; background: transparent; }
     .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 20%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 20%, transparent 80%); }
    
     .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 75vw; height: 75vh; pointer-events: none; background: radial-gradient(circle, rgba(0,240,200,0.07) 0%, rgba(46,156,255,0.04) 35%, transparent 75%); animation: ambientLiquid 16s infinite alternate ease-in-out; }
@@ -305,19 +306,19 @@
     footer { background: rgba(1, 2, 4, 0.8); backdrop-filter: blur(20px); border-top: 1px solid var(--border); padding: 5rem 5% 2rem; }
     .foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
     
-    /* Footer Logo CSS */
+    /* Footer Logo CSS - MASSIVE */
     .foot-brand { display: flex; flex-direction: column; align-items: flex-start; }
-    .foot-brand-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; margin-bottom: 1rem; }
+    .foot-brand-logo { display: flex; align-items: center; gap: 1.5rem; text-decoration: none; margin-bottom: 1.5rem; }
     .foot-brand-logo img { 
-        height: 100px; 
-        width: 100px;  
+        height: 220px; /* Massive footer logo */
+        width: 220px;  
         object-fit: contain; 
         border-radius: 50%; 
-        box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+        box-shadow: 0 8px 25px rgba(0,0,0,0.8); 
     }
-    .foot-brand-logo h4 { font-family: var(--fd); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0; }
+    .foot-brand-logo h4 { font-family: var(--fd); font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0; }
     .foot-brand-logo h4 span { color: var(--accent); }
-    .foot-brand p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; max-width: 350px; font-weight: 400; margin-top: 0.5rem;}
+    .foot-brand p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; max-width: 350px; font-weight: 400; }
     
     .foot-col h5 { font-size: 0.8rem; font-family: var(--fm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin-bottom: 1.5rem; }
     .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
@@ -349,15 +350,22 @@
       .wa-float { bottom: 20px; right: 20px; width: 55px; height: 55px; }
       .wa-float svg { width: 30px; height: 30px; }
       
+      /* Mobile Logo Handling */
       .nav-logo img {
+          height: 100px;
+          width: 100px;
+      }
+      nav.scrolled .nav-logo img {
           height: 60px;
           width: 60px;
       }
-      nav.scrolled .nav-logo img {
-          height: 50px;
-          width: 50px;
-      }
       .nav-logo div { font-size: 1.1rem; }
+      
+      .foot-brand-logo img {
+          height: 140px;
+          width: 140px;
+      }
+      .foot-brand-logo h4 { font-size: 1.5rem; }
     }
   </style>
 
