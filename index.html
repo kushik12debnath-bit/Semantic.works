@@ -81,9 +81,10 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 5%; border-bottom: 1px solid transparent;
+      padding: 0.8rem 5%;
+      border-bottom: 1px solid transparent;
       transition: all 0.6s var(--cb);
-      background: rgba(3, 5, 9, 0.05); /* very subtle backnd initially */
+      background: rgba(3, 5, 9, 0.05);
     }
     nav.scrolled {
       background: rgba(3, 5, 9, 0.85);
@@ -93,23 +94,22 @@
       padding: 0.5rem 5%;
     }
     
-    /* Header Logo CSS - Doubled Size */
-    .nav-logo { font-family: var(--fd); font-weight: 800; font-size: 1.2rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem;}
+    /* Header Logo & Text CSS */
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 0.8rem; }
     .nav-logo img { 
-        height: 130px; 
-        width: 130px;  
+        height: 75px; 
+        width: 75px;
         object-fit: contain; 
         border-radius: 50%; 
         box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
         transition: all 0.6s var(--cb);
     }
-    /* shrink logo slightly on scroll so it doesn't take over screen */
     nav.scrolled .nav-logo img {
-        height: 80px;
-        width: 80px;
+        height: 55px;
+        width: 55px;
     }
-
-    .nav-logo span { color: var(--accent); font-size: 1.5rem; line-height: 0;}
+    .nav-logo div { font-family: var(--fd); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.03em; color: var(--text); }
+    .nav-logo div span { color: var(--accent); }
     
     .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
     .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.4s var(--cb); font-weight: 500; letter-spacing: -0.01em; position: relative; padding: 0.2rem 0; }
@@ -305,19 +305,19 @@
     footer { background: rgba(1, 2, 4, 0.8); backdrop-filter: blur(20px); border-top: 1px solid var(--border); padding: 5rem 5% 2rem; }
     .foot-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
     
-    /* Footer Logo CSS - Doubled Size */
+    /* Footer Logo CSS */
     .foot-brand { display: flex; flex-direction: column; align-items: flex-start; }
-    .foot-brand-logo { display: flex; flex-direction: column; align-items: flex-start; gap: 0.8rem; text-decoration: none; margin-bottom: 1rem; }
+    .foot-brand-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; margin-bottom: 1rem; }
     .foot-brand-logo img { 
-        height: 170px; 
-        width: 170px;  
+        height: 100px; 
+        width: 100px;  
         object-fit: contain; 
         border-radius: 50%; 
         box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
     }
-    .foot-brand h4 { font-family: var(--fd); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0; }
-    .foot-brand h4 span { color: var(--accent); }
-    .foot-brand p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; max-width: 350px; font-weight: 400; }
+    .foot-brand-logo h4 { font-family: var(--fd); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0; }
+    .foot-brand-logo h4 span { color: var(--accent); }
+    .foot-brand p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; max-width: 350px; font-weight: 400; margin-top: 0.5rem;}
     
     .foot-col h5 { font-size: 0.8rem; font-family: var(--fm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin-bottom: 1.5rem; }
     .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
@@ -337,7 +337,7 @@
     }
     @media (max-width: 768px) {
       nav { padding: 1rem 5%; }
-      nav.scrolled { padding: 1rem 5%; }
+      nav.scrolled { padding: 0.5rem 5%; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       #home { padding: 12rem 5% 4rem; }
@@ -349,15 +349,15 @@
       .wa-float { bottom: 20px; right: 20px; width: 55px; height: 55px; }
       .wa-float svg { width: 30px; height: 30px; }
       
-      /* Keep logo reasonably sized on very small screens */
       .nav-logo img {
-          height: 90px;
-          width: 90px;
-      }
-      nav.scrolled .nav-logo img {
           height: 60px;
           width: 60px;
       }
+      nav.scrolled .nav-logo img {
+          height: 50px;
+          width: 50px;
+      }
+      .nav-logo div { font-size: 1.1rem; }
     }
   </style>
 
