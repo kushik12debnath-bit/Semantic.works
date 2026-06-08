@@ -93,15 +93,16 @@
       padding: 0.3rem 5%;
     }
     
-    /* Clean Logo CSS (No extra shapes) */
     .nav-logo { text-decoration: none; display: flex; align-items: center; }
     .nav-logo img { 
-        height: 60px; /* Suitable size */
-        width: auto; 
+        height: 130px; 
+        width: 130px; 
         object-fit: contain; 
+        border-radius: 50%; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
         transition: all 0.6s var(--cb);
     }
-    nav.scrolled .nav-logo img { height: 45px; }
+    nav.scrolled .nav-logo img { height: 80px; width: 80px; }
     
     .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
     .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.4s var(--cb); font-weight: 500; letter-spacing: -0.01em; position: relative; padding: 0.2rem 0; }
@@ -133,7 +134,7 @@
     .mobile-close { position: absolute; top: 1.5rem; right: 5%; font-size: 2.5rem; color: var(--muted); cursor: pointer; background: none; border: none; }
 
     /* HERO */
-    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 15rem 5% 6rem; position: relative; overflow: hidden; background: transparent; }
+    #home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 18rem 5% 6rem; position: relative; overflow: hidden; background: transparent; }
     .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 20%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 20%, transparent 80%); }
    
     .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 75vw; height: 75vh; pointer-events: none; background: radial-gradient(circle, rgba(0,240,200,0.07) 0%, rgba(46,156,255,0.04) 35%, transparent 75%); animation: ambientLiquid 16s infinite alternate ease-in-out; }
@@ -160,7 +161,6 @@
     .scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
     .scroll-line::after { content: ''; position: absolute; top: 0; left: 0; width: 1px; height: 15px; background: var(--accent); animation: scrollDown 2.2s infinite ease-in-out; }
 
-    /* SHARED STRUCTURAL REVEALS */
     section { padding: 9rem 5%; }
     .section-label { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
     .section-label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
@@ -301,14 +301,12 @@
     .foot-brand { display: flex; flex-direction: column; align-items: flex-start; }
     .foot-brand-logo { display: flex; align-items: center; gap: 1.5rem; text-decoration: none; margin-bottom: 1.5rem; }
     .foot-brand-logo img { 
-        height: 220px; /* Massive footer logo */
+        height: 220px; 
         width: 220px;  
         object-fit: contain; 
         border-radius: 50%; 
         box-shadow: 0 8px 25px rgba(0,0,0,0.8); 
     }
-    .foot-brand h4 { font-family: var(--fd); font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0; }
-    .foot-brand h4 span { color: var(--accent); }
     .foot-brand p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; max-width: 350px; font-weight: 400; margin-top: 0.5rem;}
     
     .foot-col h5 { font-size: 0.8rem; font-family: var(--fm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin-bottom: 1.5rem; }
@@ -342,12 +340,12 @@
       .wa-float svg { width: 30px; height: 30px; }
       
       .nav-logo img {
-          height: 90px;
-          width: 90px;
+          height: 100px;
+          width: 100px;
       }
       nav.scrolled .nav-logo img {
-          height: 50px;
-          width: 50px;
+          height: 60px;
+          width: 60px;
       }
     }
   </style>
@@ -367,7 +365,6 @@
 <nav id="navbar">
   <a href="#home" class="nav-logo">
     <img src="./SR_logo_nobg_hires.png" alt="Semantic Reworks Logo" onerror="this.style.display='none'" />
-    <div>Semantic<span>.</span>Reworks</div>
   </a>
   <ul class="nav-links">
     <li><a href="#tiers">Web Packages</a></li>
@@ -687,7 +684,6 @@
     <div class="foot-brand">
       <a href="#home" class="foot-brand-logo">
         <img src="./SR_logo_nobg_hires.png" alt="Semantic Reworks Logo" onerror="this.style.display='none'" />
-        <h4>Semantic<span>.</span>Reworks</h4>
       </a>
       <p>Premium automation and software studio engineering highly functional web assets.</p>
     </div>
@@ -812,12 +808,10 @@
 <script type="module">
   import * as THREE from 'three';
 
-  // 1. Scene & Atmosphere Setup
   const canvas = document.querySelector('#webgl-canvas');
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2('#030509', 0.025); // Deep fog for infinite grid effect
+  scene.fog = new THREE.FogExp2('#030509', 0.025); 
 
-  // Position camera to look down at an angle over the vast network
   const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
   camera.position.set(0, 12, 25);
   camera.lookAt(0, 0, 0);
@@ -827,23 +821,18 @@
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor('#030509', 1);
 
-  // 2. The Interactive Edge-Network Grid
   const gridGroup = new THREE.Group();
   scene.add(gridGroup);
 
-  // Grid dimensions
   const gridSize = 80;
   const divisions = 40;
   
-  // Base Geometry for the topography
   const planeGeo = new THREE.PlaneGeometry(gridSize, gridSize, divisions, divisions);
-  planeGeo.rotateX(-Math.PI / 2); // Lay flat
+  planeGeo.rotateX(-Math.PI / 2); 
 
-  // Store original Y positions for interactive deformation
   const positionAttribute = planeGeo.attributes.position;
   const originalY = new Float32Array(positionAttribute.count);
   for (let i = 0; i < positionAttribute.count; i++) {
-    // Create a subtle organic baseline wave
     const x = positionAttribute.getX(i);
     const z = positionAttribute.getZ(i);
     const y = Math.sin(x * 0.2) * Math.cos(z * 0.2) * 1.5; 
@@ -852,17 +841,14 @@
   }
   planeGeo.computeVertexNormals();
 
-  // Network Lines (Wireframe)
   const lineMat = new THREE.LineBasicMaterial({ color: 0x00f0c8, transparent: true, opacity: 0.12 });
   const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(planeGeo), lineMat);
   gridGroup.add(wireframe);
 
-  // Edge Nodes (Points at intersections)
   const pointsMat = new THREE.PointsMaterial({ color: 0x2e9cff, size: 0.2, transparent: true, opacity: 0.8 });
   const nodes = new THREE.Points(planeGeo, pointsMat);
   gridGroup.add(nodes);
 
-  // 3. Telemetry Data Packets (Simulating live Modbus/API flow)
   const packetGroup = new THREE.Group();
   gridGroup.add(packetGroup);
   const packetGeo = new THREE.SphereGeometry(0.15, 8, 8);
@@ -872,7 +858,6 @@
   for (let i = 0; i < 40; i++) {
     const packet = new THREE.Mesh(packetGeo, packetMat);
     packet.position.set((Math.random() - 0.5) * gridSize, 0, (Math.random() - 0.5) * gridSize);
-    // Data packet behavior
     packet.userData = {
       speed: Math.random() * 0.1 + 0.05,
       direction: new THREE.Vector3(Math.random() > 0.5 ? 1 : -1, 0, Math.random() > 0.5 ? 1 : -1).normalize()
@@ -881,29 +866,23 @@
     packetGroup.add(packet);
   }
 
-  // 4. Interaction Variables
   let scrollProgress = 0;
   const mouse = new THREE.Vector2();
   const targetMouse = new THREE.Vector2();
   
-  // Raycaster to detect exactly where the mouse is on the grid
   const raycaster = new THREE.Raycaster();
   const planeForRaycast = new THREE.Mesh(new THREE.PlaneGeometry(200, 200).rotateX(-Math.PI/2), new THREE.MeshBasicMaterial({visible: false}));
   scene.add(planeForRaycast);
   let intersectionPoint = new THREE.Vector3();
 
-  // 5. Event Listeners
   window.addEventListener('scroll', () => {
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     scrollProgress = maxScroll > 0 ? window.scrollY / maxScroll : 0; 
   });
 
   document.addEventListener('mousemove', (event) => {
-    // Normalize mouse for raycaster
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    // Normalize mouse for subtle camera parallax
     targetMouse.x = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
     targetMouse.y = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
   });
@@ -914,65 +893,46 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // 6. Animation Loop
   const clock = new THREE.Clock();
 
   const tick = () => {
     const elapsedTime = clock.getElapsedTime();
 
-    // -- Raycast for Interactive Grid Deformation --
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObject(planeForRaycast);
     if (intersects.length > 0) {
-      // Smoothly move intersection target
       intersectionPoint.lerp(intersects[0].point, 0.1);
     }
 
-    // Animate the grid vertices based on mouse proximity
     const positions = wireframe.geometry.attributes.position;
     for (let i = 0; i < positions.count; i++) {
       const vx = positions.getX(i);
       const vz = positions.getZ(i);
-      
-      // Calculate distance from node to mouse intersection
       const dx = vx - intersectionPoint.x;
       const dz = vz - intersectionPoint.z;
       const dist = Math.sqrt(dx * dx + dz * dz);
-      
-      // If mouse is near, lift the node up (simulates data dashboard interaction)
       let targetY = originalY[i];
       if (dist < 8) {
         targetY += (8 - dist) * 0.4; 
       }
-      
-      // Smoothly transition the Y height
       const currentY = positions.getY(i);
       positions.setY(i, currentY + (targetY - currentY) * 0.1);
     }
     wireframe.geometry.attributes.position.needsUpdate = true;
     nodes.geometry.attributes.position.needsUpdate = true;
 
-    // -- Animate Telemetry Packets --
     packets.forEach(packet => {
       packet.position.addScaledVector(packet.userData.direction, packet.userData.speed);
-      
-      // Keep packets glued to the current grid height
       const gridY = Math.sin(packet.position.x * 0.2) * Math.cos(packet.position.z * 0.2) * 1.5;
       packet.position.y = gridY;
-
-      // Wrap around if they fly off the grid
       if (packet.position.x > gridSize / 2) packet.position.x = -gridSize / 2;
       if (packet.position.x < -gridSize / 2) packet.position.x = gridSize / 2;
       if (packet.position.z > gridSize / 2) packet.position.z = -gridSize / 2;
       if (packet.position.z < -gridSize / 2) packet.position.z = gridSize / 2;
     });
 
-    // -- Camera Scroll Dynamics --
-    // Panning slowly over the infrastructure as the user scrolls
     camera.position.z = 25 - (scrollProgress * 15);
     camera.position.y = 12 - (scrollProgress * 5);
-    
-    // Subtle mouse parallax
     camera.position.x += (targetMouse.x * 2 - camera.position.x) * 0.05;
     camera.lookAt(targetMouse.x * 2, 0, targetMouse.y * -2);
 
