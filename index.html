@@ -1576,70 +1576,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   sectionTitles.forEach(t => titleObserver.observe(t));
 
-// === V2: BUSINESS CONVERSION ENHANCEMENTS ===
-document.addEventListener("DOMContentLoaded", () => {
-  // Loading Screen
-  const ls = document.createElement("div");
-  ls.className = "loading-screen";
-  ls.innerHTML = "<div class="loading-logo">Semantic Reworks</div><div class="loading-bar"></div>";
-  document.body.prepend(ls);
-  document.body.classList.add("loading");
-  setTimeout(() => { ls.classList.add("hidden"); document.body.classList.remove("loading"); setTimeout(() => ls.remove(), 600); }, 2200);
-
-  // Typing Effect
-  const hs = document.querySelector(".hero-sub");
-  if (hs) {
-    const ot = hs.textContent; hs.textContent = "";
-    const tc = document.createElement("span"); tc.className = "typing-cursor"; hs.appendChild(tc);
-    let i = 0;
-    setTimeout(() => {
-      const ti = setInterval(() => {
-        if (i < ot.length) { hs.insertBefore(document.createTextNode(ot[i]), tc); i++; }
-        else { clearInterval(ti); setTimeout(() => tc.remove(), 2000); }
-      }, 20);
-    }, 2500);
-  }
-
-  // Floating Notification
-  const nf = document.createElement("div"); nf.className = "float-notification";
-  nf.innerHTML = "<button class="notif-close" onclick="this.parentElement.classList.remove(\"show\")">x</button><div class="notif-icon">🚀</div><div class="notif-title">Recent Launch</div><div class="notif-text">We just deployed a real-time IoT dashboard for a manufacturing client in Kolkata.</div>";
-  document.body.appendChild(nf);
-  setTimeout(() => nf.classList.add("show"), 8000);
-  nf.addEventListener("click", e => { if (!e.target.classList.contains("notif-close")) { document.querySelector("#contact").scrollIntoView({behavior:"smooth"}); nf.classList.remove("show"); } });
-
-  // Mobile Sticky CTA
-  const sc = document.createElement("div"); sc.className = "mobile-sticky-cta";
-  sc.innerHTML = "<span class="cta-text">Ready to build?</span><button class="cta-btn" onclick="document.querySelector(\#contact).scrollIntoView({behavior:\"smooth\"})">Get Quote</button>";
-  document.body.appendChild(sc);
-  window.addEventListener("scroll", () => sc.classList.toggle("visible", window.scrollY > 400));
-
-  // Section Reveal
-  const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }), {threshold:0.1,rootMargin:"0px 0px -60px 0px"});
-  document.querySelectorAll("section").forEach(s => { s.classList.add("section-reveal"); so.observe(s); });
-
-  // Belief Numbers
-  document.querySelectorAll(".belief").forEach((b,i) => {
-    const n = document.createElement("div"); n.className = "belief-num"; n.textContent = "0" + (i+1);
-    b.style.position = "relative"; b.appendChild(n);
-  });
-
-  // CTA Scroll
-  document.querySelectorAll(".hero-actions a").forEach(btn => {
-    btn.addEventListener("click", e => { e.preventDefault(); const t = document.querySelector(btn.getAttribute("href") || "#contact"); if (t) t.scrollIntoView({behavior:"smooth"}); });
-  });
-
-  // Card Glow
-  document.querySelectorAll(".tier-card, .port-card, .srv").forEach(card => {
-    card.addEventListener("mousemove", e => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty("--mouse-x", ((e.clientX-r.left)/r.width*100)+"%");
-      card.style.setProperty("--mouse-y", ((e.clientY-r.top)/r.height*100)+"%");
-    });
-  });
-});
-});
-</script>
-
 
 <script type="module">
   import * as THREE from 'three';
@@ -1779,6 +1715,84 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   tick();
+
+// === V2: BUSINESS CONVERSION ENHANCEMENTS ===
+
+document.addEventListener("DOMContentLoaded", function() {
+  // 1. Loading Screen
+  var ls = document.createElement("div");
+  ls.className = "loading-screen";
+  ls.innerHTML = '<div class=loading-logo>Semantic Reworks</div><div class=loading-bar></div>';
+  document.body.prepend(ls);
+  document.body.classList.add("loading");
+  setTimeout(function() { ls.classList.add("hidden"); document.body.classList.remove("loading"); setTimeout(function() { ls.remove(); }, 600); }, 2200);
+
+  // 2. Typing Effect
+  var hs = document.querySelector(".hero-sub");
+  if (hs) {
+    var ot = hs.textContent; hs.textContent = "";
+    var tc = document.createElement("span"); tc.className = "typing-cursor"; hs.appendChild(tc);
+    var idx = 0;
+    setTimeout(function() {
+      var ti = setInterval(function() {
+        if (idx < ot.length) { hs.insertBefore(document.createTextNode(ot[idx]), tc); idx++; }
+        else { clearInterval(ti); setTimeout(function() { tc.remove(); }, 2000); }
+      }, 20);
+    }, 2500);
+  }
+
+  // 3. Floating Notification
+  var nf = document.createElement("div"); nf.className = "float-notification";
+  nf.innerHTML = '<button class=
+otif-close>&times;</button><div class=
+otif-icon>🚀</div><div class=
+otif-title>Recent Launch</div><div class=
+otif-text>We just deployed a real-time IoT dashboard for a manufacturing client in Kolkata.</div>';
+  document.body.appendChild(nf);
+  setTimeout(function() { nf.classList.add("show"); }, 8000);
+  nf.querySelector(".notif-close").addEventListener("click", function() { nf.classList.remove("show"); });
+  nf.addEventListener("click", function(e) {
+    if (e.target.classList.contains("notif-close")) return;
+    document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
+    nf.classList.remove("show");
+  });
+
+  // 4. Mobile Sticky CTA
+  var sc = document.createElement("div"); sc.className = "mobile-sticky-cta";
+  sc.innerHTML = '<span class=cta-text>Ready to build?</span><button class=cta-btn>Get Quote</button>';
+  document.body.appendChild(sc);
+  sc.querySelector(".cta-btn").addEventListener("click", function() {
+    document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
+  });
+  window.addEventListener("scroll", function() { sc.classList.toggle("visible", window.scrollY > 400); });
+
+  // 5. Section Reveal
+  var so = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+  }, {threshold:0.1,rootMargin:"0px 0px -60px 0px"});
+  document.querySelectorAll("section").forEach(function(s) { s.classList.add("section-reveal"); so.observe(s); });
+
+  // 6. Belief Numbers
+  document.querySelectorAll(".belief").forEach(function(b,i) {
+    var n = document.createElement("div"); n.className = "belief-num"; n.textContent = "0" + (i+1);
+    b.style.position = "relative"; b.appendChild(n);
+  });
+
+  // 7. CTA Scroll
+  document.querySelectorAll(".hero-actions a").forEach(function(btn) {
+    btn.addEventListener("click", function(e) { e.preventDefault(); var t = document.querySelector(btn.getAttribute("href") || "#contact"); if (t) t.scrollIntoView({behavior:"smooth"}); });
+  });
+
+  // 8. Card Glow
+  document.querySelectorAll(".tier-card, .port-card, .srv").forEach(function(card) {
+    card.addEventListener("mousemove", function(e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--mouse-x", ((e.clientX-r.left)/r.width*100)+"%");
+      card.style.setProperty("--mouse-y", ((e.clientY-r.top)/r.height*100)+"%");
+    });
+  });
+
+});
 </script>
 </body>
 </html>
