@@ -566,6 +566,381 @@ footer .reveal {
   .cursor-dot, .cursor-ring { display: none !important; }
 }
 
+
+/* === V2: BUSINESS CONVERSION ENHANCEMENTS === */
+
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #030509;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.loading-logo {
+  font-family: var(--fd);
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+.loading-bar {
+  width: 200px;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.5s forwards;
+}
+.loading-bar::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 2px;
+  animation: loadProgress 1.5s ease 0.7s forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes loadProgress {
+  to { width: 100%; }
+}
+body.loading {
+  overflow: hidden;
+}
+
+/* Animated Counter Numbers */
+.stat-num[data-target] {
+  transition: color 0.3s ease;
+}
+.stat-num.counting {
+  color: var(--accent);
+}
+
+/* Trust Banner */
+.trust-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.trust-item:hover {
+  opacity: 1;
+}
+.trust-num {
+  font-family: var(--fd);
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.trust-label {
+  font-family: var(--fm);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* Hero Enhanced */
+.hero-title .word-reveal {
+  display: inline-block;
+  overflow: hidden;
+}
+.hero-title .word-reveal span {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: wordReveal 0.8s var(--cb) forwards;
+}
+@keyframes wordReveal {
+  to { transform: translateY(0); }
+}
+.hero-title .word-reveal:nth-child(1) span { animation-delay: 0.2s; }
+.hero-title .word-reveal:nth-child(2) span { animation-delay: 0.35s; }
+.hero-title .word-reveal:nth-child(3) span { animation-delay: 0.5s; }
+
+/* Typing cursor effect */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* CTA Glow Button Enhancement */
+.btn-cta-glow {
+  position: relative;
+  background: var(--gradient);
+  border: none;
+  color: #030509;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s var(--cb), box-shadow 0.3s ease;
+  box-shadow: 0 0 30px rgba(0, 240, 200, 0.2);
+}
+.btn-cta-glow:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 40px rgba(0, 240, 200, 0.35);
+}
+.btn-cta-glow:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Floating notification badge */
+.float-notification {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateX(120%);
+  transition: transform 0.5s var(--cb), opacity 0.5s ease;
+  max-width: 320px;
+  cursor: pointer;
+}
+.float-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+.float-notification .notif-icon {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+.float-notification .notif-title {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+.float-notification .notif-text {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.float-notification .notif-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Smooth section reveal */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--cb), transform 0.8s var(--cb);
+}
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pricing card enhanced hover */
+.tier-card {
+  transition: transform 0.5s var(--cb), box-shadow 0.5s ease, border-color 0.3s ease;
+}
+.tier-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 60px rgba(0, 240, 200, 0.1);
+}
+
+/* Service card icon animation */
+.srv-icon {
+  transition: transform 0.4s var(--cb), color 0.3s ease;
+}
+.srv:hover .srv-icon {
+  transform: scale(1.15) rotate(-5deg);
+  color: var(--accent);
+}
+
+/* Portfolio card reveal overlay */
+.port-card {
+  position: relative;
+  overflow: hidden;
+}
+.port-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: linear-gradient(to top, rgba(0,240,200,0.08), transparent);
+  transition: height 0.5s var(--cb);
+  z-index: 0;
+}
+.port-card:hover::before {
+  height: 100%;
+}
+
+/* Smooth scroll indicator */
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Contact form success animation */
+.form-success-anim {
+  animation: successPop 0.5s var(--cb);
+}
+@keyframes successPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Stacked text effect for tier names */
+.tier-name {
+  position: relative;
+  display: inline-block;
+}
+.tier-name::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.4s var(--cb);
+}
+.tier-card:hover .tier-name::after {
+  width: 100%;}
+
+/* Belief card counter number */
+.belief-num {
+  font-family: var(--fd);
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.15;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.belief:hover .belief-num {
+  opacity: 0.3;
+}
+
+/* Footer link hover effect */
+footer a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s var(--cb);
+}
+footer a:hover::after {
+  width: 100%;
+}
+
+/* Performance: will-change for animated elements */
+.cursor-dot, .cursor-ring, .scroll-progress, .tilt-card, .magnetic {
+  will-change: transform;
+}
+
+/* Mobile sticky CTA */
+@media (max-width: 768px) {
+  .mobile-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(3, 5, 9, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 12px 20px;
+    z-index: 9998;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(100%);
+    transition: transform 0.4s var(--cb);
+  }
+  .mobile-sticky-cta.visible {
+    transform: translateY(0);
+  }
+  .mobile-sticky-cta .cta-text {
+    font-family: var(--fd);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .mobile-sticky-cta .cta-btn {
+    background: var(--gradient);
+    color: #030509;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+}
+@media (min-width: 769px) {
+  .mobile-sticky-cta { display: none; }
+}
   </style>
 
   <script type="importmap">
@@ -1241,6 +1616,7 @@ document.addEventListener('DOMContentLoaded', () => {
     originalY[i] = y;
   }
   planeGeo.computeVertexNormals();
+  planeGeo.computeBoundingSphere();
   const lineMat = new THREE.LineBasicMaterial({ color: 0x00f0c8, transparent: true, opacity: 0.12 });
   planeGeo.computeBoundingSphere();
   const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(planeGeo), lineMat);
