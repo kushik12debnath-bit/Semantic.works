@@ -1241,7 +1241,6 @@ document.addEventListener('DOMContentLoaded', () => {
     originalY[i] = y;
   }
   planeGeo.computeVertexNormals();
-
   const lineMat = new THREE.LineBasicMaterial({ color: 0x00f0c8, transparent: true, opacity: 0.12 });
   planeGeo.computeBoundingSphere();
   const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(planeGeo), lineMat);
@@ -1338,6 +1337,7 @@ document.addEventListener('DOMContentLoaded', () => {
     camera.position.x += (targetMouse.x * 2 - camera.position.x) * 0.05;
     camera.lookAt(targetMouse.x * 2, 0, targetMouse.y * -2);
 
+    planeGeo.computeBoundingSphere();
     renderer.render(scene, camera);
     window.requestAnimationFrame(tick);
   };
