@@ -1632,8 +1632,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".tier-card, .port-card, .srv").forEach(card => {
     card.addEventListener("mousemove", e => {
       const r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", ((e.clientX-r.left)/r.width*100)+"%");
-      card.style.setProperty("--my", ((e.clientY-r.top)/r.height*100)+"%");
+      card.style.setProperty("--mouse-x", ((e.clientX-r.left)/r.width*100)+"%");
+      card.style.setProperty("--mouse-y", ((e.clientY-r.top)/r.height*100)+"%");
     });
   });
 });
